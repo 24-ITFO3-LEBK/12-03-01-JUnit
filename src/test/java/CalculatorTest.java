@@ -25,4 +25,10 @@ public class CalculatorTest {
     public void testdivide() {
         assertEquals(2, calculator.divide(8, 4), "8 / 4 sollte 2 ergeben");
     }
+
+    @Test
+    public void testdivideex() {
+        assertEquals(2, calculator.divide(4, 0), "4 / 0 sollte exception ergeben");
+    }
+
 }
