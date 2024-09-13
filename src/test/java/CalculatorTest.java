@@ -28,8 +28,10 @@ public class CalculatorTest {
 
     @Test
     public void testDivideWithZero() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             calculator.divide(10, 0);
         });
+
+        assertEquals("Cannot divide by zero.", exception.getMessage());
     }
 }
