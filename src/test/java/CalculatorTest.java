@@ -19,4 +19,12 @@ public class CalculatorTest {
     public void testMultiply() {
         assertEquals(6, calculator.multiply(2, 3), "2 * 3 sollte 6 ergeben");
     }
+
+    @Test
+    public void testDivideZero(){assertThrows(IllegalArgumentException.class,()-> calculator.divide(2, 0));}
+
+    @Test
+    public void testDivide() {assertEquals(3, calculator.divide(9, 3), "9 / 3 sollte 3 ergeben");}
+
+
 }
