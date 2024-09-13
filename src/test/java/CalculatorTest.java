@@ -31,6 +31,6 @@ public class CalculatorTest {
     public void testDivideWithZeroShouldThrow()
     {
         Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
-        assertThrowsExactly(expectedException, () -> calculator.divide(10, 0), "Number can not be devided by 0");
+        assertThrowsExactly(expectedException, () -> calculator.divide(10, 0), "Number can not be divided by 0");
     }
 }
