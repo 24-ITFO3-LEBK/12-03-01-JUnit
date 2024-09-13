@@ -19,4 +19,18 @@ public class CalculatorTest {
     public void testMultiply() {
         assertEquals(6, calculator.multiply(2, 3), "2 * 3 sollte 6 ergeben");
     }
+
+    @Test
+    public void testDivideShouldReturnExpectedResult()
+    {
+        int expectedResult = 5;
+        assertEquals(expectedResult, calculator.divide(10, 2), "10 / 2 should return 5");
+    }
+
+    @Test
+    public void testDivideWithZeroShouldThrow()
+    {
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+        assertThrowsExactly(expectedException, () -> calculator.divide(10, 0), "Number can not be devided by 0");
+    }
 }
