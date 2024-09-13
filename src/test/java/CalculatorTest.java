@@ -29,8 +29,7 @@ public class CalculatorTest {
     @Test
     public void testDivideByZero() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.divide(2,0));
-        String expectedMessages = "Cannot divide by zero.";
         String actuallyMessages = exception.getMessage();
-        assertTrue(actuallyMessages.contains(expectedMessages));
+        assertTrue(actuallyMessages.contains(Calculator.CANNOT_DIVIDE_BY_ZERO));
     }
 }
