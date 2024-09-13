@@ -27,7 +27,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testDivideWithZero() {
+    public void testDivideByZero() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             calculator.divide(10, 0);
         });
