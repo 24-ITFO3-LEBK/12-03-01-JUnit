@@ -32,4 +32,9 @@ public class CalculatorTest {
             calculator.divide(10, 0);
         });
     }
+
+    @Test
+     void testFibonacciIsNotNull () {
+     assertNotEquals(null, calculator.generateFibonacci(1), "Array soll ungleich Null sein");
+    }
 }
