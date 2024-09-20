@@ -23,13 +23,13 @@ public class CalculatorTest {
 
     @Test
     public void testDivide() {
-        assertEquals(5, calculator.divide(10, 2), "10 / 2 sollte 5 ergeben");
+        assertEquals(6, calculator.divide(12, 2), "12 / 2 sollte 6 ergeben");
     }
 
     @Test
     public void testDivideByZero() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            calculator.divide(10, 0);
+            calculator.divide(12, 0);
         });
 
         assertEquals("Cannot divide by zero.", exception.getMessage());
