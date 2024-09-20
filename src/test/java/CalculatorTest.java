@@ -19,4 +19,9 @@ public class CalculatorTest {
     public void testMultiply() {
         assertEquals(6, calculator.multiply(2, 3), "2 * 3 sollte 6 ergeben");
     }
+
+    @Test
+    public void testDivide() {
+        assertEquals(8, calculator.multiply(40, 5), "40 / 5 sollte 8 ergeben");
+    }
 }
