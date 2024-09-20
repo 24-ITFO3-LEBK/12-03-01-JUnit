@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class CalculatorTest {
 
     private final Calculator calculator = new Calculator();
@@ -30,4 +31,13 @@ public class CalculatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.divide(10, 0));
         assertEquals("Cannot divide by zero.", exception.getMessage());
     }
+
+    @Test
+    public void testFibGreaterZero(){assertNotNull(calculator.generateFibonacci(6));}
+
+    @Test
+    public void testFibEqualsZero(){assertArrayEquals(new int[] {},calculator.generateFibonacci(0));}
+
+    @Test
+    public void testTwoLeadingNumbers(){assertArrayEquals(new int[] {0,1}, calculator.generateFibonacci(2));}
 }
