@@ -1,9 +1,14 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
-    private final Calculator calculator = new Calculator();
+    private Calculator calculator = new Calculator();
 
     @Test
     public void testAdd() {
@@ -27,9 +32,31 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testGenerateFibonacci(){
+    public void testGenerateFibonacci() {
+        //Aufgabe 1
         assertNotNull(calculator.generateFibonacci(1));
         assertArrayEquals(calculator.generateFibonacci(0), new int[0]);
-        assertArrayEquals(calculator.generateFibonacci(2),new int[]{0,1});
+        assertArrayEquals(calculator.generateFibonacci(2), new int[]{0, 1});
+        //Aufgabe 2
+        assertArrayEquals(calculator.generateFibonacci(5), new int[]{0, 1, 1, 2, 3});
+        assertArrayEquals(calculator.generateFibonacci(10), new int[]{0, 1, 1, 2, 3, 5, 8, 13, 21, 34});
+        assertArrayEquals(calculator.generateFibonacci(4), new int[]{0, 1, 1, 2});
+        assertArrayEquals(calculator.generateFibonacci(1), new int[]{0});
+        assertArrayEquals(calculator.generateFibonacci(-1), new int[]{});
+        //Aufgabe 3
+        assertTimeoutPreemptively(Duration.ofSeconds(1), () -> {
+            calculator.generateFibonacci(100000000);
+        });
     }
+    //Aufgabe 4
+    @BeforeEach
+    public void newCalc(){
+        calculator = new Calculator();
+    }
+
+    @AfterEach
+    public void testEnd(){
+        System.out.println("Test abgeschlossen");
+    }
+
 }
