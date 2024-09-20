@@ -1,4 +1,7 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 
 import java.util.Arrays;
 
@@ -7,7 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
-    private final Calculator calculator = new Calculator();
+    private Calculator calculator = new Calculator();
+
+    @BeforeEach
+    void createNewCalculator() {
+        calculator = new Calculator();
+    }
 
     @Test
     public void testAdd() {
@@ -70,5 +78,10 @@ public class CalculatorTest {
     @Test
     public void testGenerateFibonacciTimeout() {
         assertTimeout(ofMillis(1), () -> calculator.generateFibonacci(10000), "Die Fibonacci Zahlen von 10.000 können innerhalb einer 1 Millisekunde berechnet werden");
+    }
+
+    @AfterEach
+    void afterEachTest(TestInfo testInfo) {
+        System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());
     }
 }
