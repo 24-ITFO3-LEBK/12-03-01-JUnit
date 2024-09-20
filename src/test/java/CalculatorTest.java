@@ -25,4 +25,11 @@ public class CalculatorTest {
         assertEquals(2,calculator.divide(6,3), "6 / 3 sollte 2 ergeben");
         assertEquals(5,calculator.divide(55,11), "55 / 11 sollte 5 ergeben");
     }
+
+    @Test
+    public void testGenerateFibonacci(){
+        assertNotNull(calculator.generateFibonacci(1));
+        assertArrayEquals(calculator.generateFibonacci(0), new int[0]);
+        assertArrayEquals(calculator.generateFibonacci(2),new int[]{0,1});
+    }
 }
