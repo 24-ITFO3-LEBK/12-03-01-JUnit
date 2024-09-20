@@ -1,9 +1,20 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
+    @BeforeEach
+    public void initEach(){
+        Calculator calculator = new Calculator();
+    }
 
     private final Calculator calculator = new Calculator();
+
+    @AfterEach
+    public void each(){
+        System.out.println("Abgeschlossen");
+    }
 
     @Test
     public void testAdd() {
@@ -31,5 +42,18 @@ public class CalculatorTest {
             calculator.divide(10, 0);
         });
         assertEquals("Cannot divide by zero.", exception.getMessage());
+    }
+
+    @Test
+    public void testFibonacciEdgecases(){
+        assertNotEquals(null, calculator.generateFibonacci(4), "Fibonacci nicht null");
+        assertEquals(0, calculator.generateFibonacci(0).length);
+        assertArrayEquals(new int[]{0,1}, calculator.generateFibonacci(2));
+    }
+
+    @Test
+    public void testFibonacci(){
+        assertArrayEquals(new int[]{0,1,1,2,3}, calculator.generateFibonacci(5));
+        assertArrayEquals(new int[]{0,1,1,2,3,5,8}, calculator.generateFibonacci(7));
     }
 }
