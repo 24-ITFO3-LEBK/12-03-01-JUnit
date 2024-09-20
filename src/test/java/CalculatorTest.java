@@ -25,4 +25,20 @@ public class CalculatorTest {
         assertEquals(1, calculator.divide(3, 3), "3 / 3 sollte 1 ergeben");
         assertEquals(0, calculator.divide(3, 0), "3 / 0 sollte 0 ergeben");
     }
+
+    @Test
+    public  void testGenerateOfFibonacci() {
+
+        //assertArrayEquals(5, );
+        //assertArrayEquals(int[], calculator.generateFibonacci() != null);
+        assertNotNull(calculator.generateFibonacci(5));
+
+    }
+
+    @Test
+    public  void testGenerateOfFibonacciEmpty() {
+
+        assertNotNull(calculator.generateFibonacci(5));
+
+    }
 }
