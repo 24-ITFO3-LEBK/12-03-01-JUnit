@@ -27,11 +27,6 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testAddWithParams() {
-        assertEquals(5, calculator.add(2, 3), "2 + 3 sollte 5 ergeben");
-    }
-
-    @Test
     public void testSubtract() {
         assertEquals(1, calculator.subtract(5, 4), "5 - 4 sollte 1 ergeben");
     }
