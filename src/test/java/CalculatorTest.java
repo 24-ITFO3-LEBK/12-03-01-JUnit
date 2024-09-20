@@ -85,7 +85,7 @@ public class CalculatorTest {
 
     @Test
     public void testGenerateSpeedOfFibonacciList(){
-        int n = 40;
+        int n = 100;
         int[] expectedList = calculator.generateFibonacci(n);
         for (int i = 0 ; i< n ; i++){
            assertTimeout(Duration.ofMillis(1),() -> {
@@ -97,8 +97,18 @@ public class CalculatorTest {
     @ParameterizedTest
     @ValueSource(ints = {0,1,10,20})
     void testParameterizedFiboTest(int n){
-        int number = n;
-        int[] expected =calculator.generateFibonacci(number);
+        int[] expected =calculator.generateFibonacci(n);
         assertEquals(n, expected.length,"Die Anzahl der Elemente = Länge der Liste");
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = 10)
+    void testParameterizedFiboTestWithOneValue(int n){
+        int[] actualList = {0,1,1,2,3,5,8,13,21,34};
+        int[] expected =calculator.generateFibonacci(n);
+        assertEquals(actualList.length, expected.length,"Gleiche Menge an Elementen");
+        for (int i = 0 ; i< n ; i++){
+            assertEquals(actualList[i],expected[i], "should be"+ actualList[i]);
+        }
     }
 }
