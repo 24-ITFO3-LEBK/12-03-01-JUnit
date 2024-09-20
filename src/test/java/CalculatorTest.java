@@ -30,4 +30,19 @@ public class CalculatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.divide(1, 0));
         assertEquals("Cannot divide by zero.", exception.getMessage());
     }
+
+    @Test
+    public void testGenerateFibonacci() {
+        assertArrayEquals(new int[]{0, 1}, calculator.generateFibonacci(2), "Die Fibonacci Zahlen von 2 sind [0, 1]");
+    }
+
+    @Test
+    public void testGenerateFibonacciIsEmpty() {
+        assertEquals(0, calculator.generateFibonacci(0).length, "Das Array von Fibonacci Zahlen ist leer");
+    }
+
+    @Test
+    public void testGenerateFibonacciIsNotEmpty() {
+        assertNotEquals(0, calculator.generateFibonacci(10).length, "Das Array von Fibonacci Zahlen ist nicht leer");
+    }
 }
