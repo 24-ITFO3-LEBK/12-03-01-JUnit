@@ -2,8 +2,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static java.time.Duration.ofMillis;
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,26 +57,24 @@ public class CalculatorTest {
         assertNotEquals(0, calculator.generateFibonacci(10).length, "Das Array von Fibonacci Zahlen ist nicht leer");
     }
 
-    @Test
-    public void testGenerateFibonacciWithMultipleCases() {
-        // Array of test cases: {Input, ExpectedOutput}
-        Object[][] testCases = {
-                {1, new int[]{0}},
-                {2, new int[]{0, 1}},
-                {3, new int[]{0, 1, 1}},
-                {4, new int[]{0, 1, 1, 2}},
-                {5, new int[]{0, 1, 1, 2, 3}},
-                {10, new int[]{0, 1, 1, 2, 3, 5, 8, 13, 21, 34}}
-        };
+    static Stream<Arguments> fibonacciTestCases() {
+        return Stream.of(
+                Arguments.of(0, new int[]{}),
+                Arguments.of(1, new int[]{0}),
+                Arguments.of(2, new int[]{0, 1}),
+                Arguments.of(3, new int[]{0, 1, 1}),
+                Arguments.of(4, new int[]{0, 1, 1, 2}),
+                Arguments.of(5, new int[]{0, 1, 1, 2, 3}),
+                Arguments.of(10, new int[]{0, 1, 1, 2, 3, 5, 8, 13, 21, 34})
+        );
+    }
 
-        for (Object[] testCase : testCases) {
-            int input = (int) testCase[0];
-            int[] expected = (int[]) testCase[1];
+    @ParameterizedTest(name = "Generate Fibonacci for {0}")
+    @MethodSource("fibonacciTestCases")
+    void testGenerateFibonacciWithMultipleCases(int input, int[] expected) {
+        int[] result = calculator.generateFibonacci(input);
 
-            int[] result = calculator.generateFibonacci(input);
-
-            assertArrayEquals(expected, result, "Die Fibonacci Zahlen von " + input + " sind " + Arrays.toString(expected));
-        }
+        assertArrayEquals(expected, result, "Die Fibonacci Zahlen von " + input + " sind " + Arrays.toString(expected));
     }
 
     @Test
