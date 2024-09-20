@@ -24,4 +24,20 @@ public class CalculatorTest {
     public void testDivide() {
     	assertEquals(4, calculator.divide(8, 2), "8 : 2 sollte 4 ergeben");
     }
+    
+    @Test
+    public void testGenerateFibonacciForNull() {
+    	assertFalse(calculator.generateFibonacci(1) == null);
+    }
+    
+    @Test
+    public void testGenerateFibonacciForZero() {
+    	assertFalse(calculator.generateFibonacci(1).length == 0);
+    }
+    
+    @Test
+    public void testGenerateFibonacciFirstTwoValues() {
+    	assertTrue(calculator.generateFibonacci(2)[0] == 0);
+    	assertTrue(calculator.generateFibonacci(2)[1] == 1);
+    }
 }
