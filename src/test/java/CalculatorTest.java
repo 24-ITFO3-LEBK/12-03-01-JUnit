@@ -43,13 +43,19 @@ public class CalculatorTest {
 
     @Test
     public void testFibonacci() {
-        assertNull(calculator.generateFibonacci(0).length);
+        // Array für n == 0 leer
+        assertTrue(calculator.generateFibonacci(0).length == 0);
+        //generierte Array für n > 0 nicht null
         assertNotNull(calculator.generateFibonacci(5));
+        // die ersten beiden Werte der Fibonacci-Reihe korrekt sind
+        assertArrayEquals(calculator.generateFibonacci(2), new int[]{0, 1});
 
+        //unterschiedliche Werte von n zu ueberpruefen
         assertArrayEquals(calculator.generateFibonacci(1),new int[]{0});
         assertArrayEquals(calculator.generateFibonacci(4),new int[]{0,1,1,2});
         assertArrayEquals(calculator.generateFibonacci(5),new int[]{0,1,1,2,3});
 
+        //Fibonacci-Zahlen für groeßere Werte von n innerhalb einer vernuenftigen Zeitspanne erfolgt
         assertTimeout(Duration.ofSeconds(10),() ->calculator.generateFibonacci(100));
     }
 
