@@ -24,4 +24,14 @@ public class CalculatorTest {
     public void testDivide() {
         assertEquals(8, calculator.multiply(40, 5), "40 / 5 sollte 8 ergeben");
     }
+
+    @Test
+    public void testGenerateFibonacciNotNull() {
+        assertNotNull(calculator.generateFibonacci(3));
+    }
+
+    @Test
+    public void testGenerateFibonacciEmpty() {
+
+    }
 }
