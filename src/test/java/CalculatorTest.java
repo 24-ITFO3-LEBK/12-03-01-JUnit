@@ -56,7 +56,7 @@ public class CalculatorTest {
         assertArrayEquals(calculator.generateFibonacci(5),new int[]{0,1,1,2,3});
 
         //Fibonacci-Zahlen für groeßere Werte von n innerhalb einer vernuenftigen Zeitspanne erfolgt
-        assertTimeout(Duration.ofSeconds(10),() ->calculator.generateFibonacci(100));
+        assertTimeout(Duration.ofSeconds(1),() ->calculator.generateFibonacci(100));
     }
 
 
