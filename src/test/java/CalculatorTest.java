@@ -22,6 +22,6 @@ public class CalculatorTest {
 
     @Test
     public void testDivide() {
-        assertEquals(6, calculator.divide(6, 2), "6 / 2 sollte 3 ergeben");
+        assertEquals(3, calculator.divide(6, 2), "6 / 2 sollte 3 ergeben");
     }
 }
