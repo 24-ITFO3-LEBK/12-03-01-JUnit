@@ -1,10 +1,15 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CalculatorTest {
 
-    private final Calculator calculator = new Calculator();
+    private  Calculator calculator;
 
     @Test
     public void testAdd() {
@@ -40,4 +45,28 @@ public class CalculatorTest {
 
     @Test
     public void testTwoLeadingNumbers(){assertArrayEquals(new int[] {0,1}, calculator.generateFibonacci(2));}
+
+    @Test
+    public void testCheckWholeFib(){
+        assertArrayEquals(new int[] {0,1,1,2,3,5,},calculator.generateFibonacci(6));
+        assertArrayEquals(new int[] {0,1,1,2,3,5,8,13},calculator.generateFibonacci(8));
+        assertArrayEquals(new int[] {0,1,1,2,3,5,8,13,21,34},calculator.generateFibonacci(10));
+        assertArrayEquals(new int[] {0,1,1},calculator.generateFibonacci(3));
+        assertArrayEquals(new int[] {0},calculator.generateFibonacci(1));
+    }
+
+    @Test
+    public void testRuntime(){
+        assertTimeout(Duration.ofMillis(1000), () -> { calculator.generateFibonacci(100000000); });
+    }
+
+    @BeforeEach
+    public void onTestStart(){
+        calculator = new Calculator();
+    }
+
+    @AfterEach
+    public void onTestFinished(){
+        System.out.print("Test abgeschlossen");
+    }
 }
