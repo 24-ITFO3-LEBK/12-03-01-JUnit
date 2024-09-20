@@ -43,8 +43,8 @@ public class CalculatorTest {
 
     @Test
     public void testFibonacci() {
-        assertTrue(calculator.generateFibonacci(0).length == 0);
-        assertTrue(calculator.generateFibonacci(5) != null);
+        assertNull(calculator.generateFibonacci(0).length);
+        assertNotNull(calculator.generateFibonacci(5));
 
         assertArrayEquals(calculator.generateFibonacci(1),new int[]{0});
         assertArrayEquals(calculator.generateFibonacci(4),new int[]{0,1,1,2});
