@@ -67,6 +67,6 @@ public class CalculatorTest {
 
     @AfterEach
     public void onTestFinished(){
-        System.out.print("Test abgeschlossen");
+        System.out.print("Test abgeschlossen \n");
     }
 }
