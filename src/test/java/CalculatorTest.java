@@ -19,4 +19,13 @@ public class CalculatorTest {
     public void testMultiply() {
         assertEquals(6, calculator.multiply(2, 3), "2 * 3 sollte 6 ergeben");
     }
+
+    @Test
+    public void testDivide() {
+        assertEquals(6, calculator.divide(18, 3), "18 / 3 sollte 6 ergeben");
+    }
+
+    @Test
+    public void testDivideByZero() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.divide(1, 0)); assertEquals("Cannot divide by zero.", exception.getMessage()); }
 }
