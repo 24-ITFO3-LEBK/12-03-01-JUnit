@@ -41,4 +41,19 @@ public class CalculatorTest {
         assertNotNull(calculator.generateFibonacci(5));
 
     }
+
+    @Test
+    public void testPower() {
+        assertEquals(16 ,calculator.power(2, 4));
+    }
+
+    @Test
+    public void testPowerNegative() {
+        assertEquals(0.0625 ,calculator.power(2, -4));
+    }
+
+    @Test
+    public void testPowerNull() {
+        assertNull(calculator.power(2, 4));
+    }
 }

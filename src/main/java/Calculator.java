@@ -31,4 +31,8 @@ public class Calculator {
         }
         return fib;
     }
+
+    public double power(int a, int b) {
+        return Math.pow(a, b);
+    }
 }
