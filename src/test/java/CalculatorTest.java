@@ -111,8 +111,6 @@ public class CalculatorTest {
     @Test
     public void sqrt_WithNegativeInput_ShouldThrow() {
         Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
-        assertThrows(expectedException, () -> {
-            calculator.sqrt(-1);
-        });
+        assertThrows(expectedException, () -> calculator.sqrt(-1));
     }
 }
