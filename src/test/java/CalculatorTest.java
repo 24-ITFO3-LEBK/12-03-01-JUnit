@@ -122,11 +122,11 @@ public class CalculatorTest {
 
     @Test
     void testIsPrime() {
-       assertTrue(calculator.isPrime(3));
-       assertTrue(calculator.isPrime(5));
-       assertTrue(calculator.isPrime(7));
-       assertTrue(calculator.isPrime(59));
-       assertTrue(calculator.isPrime(33179));
+        assertTrue(calculator.isPrime(3));
+        assertTrue(calculator.isPrime(5));
+        assertTrue(calculator.isPrime(7));
+        assertTrue(calculator.isPrime(59));
+        assertTrue(calculator.isPrime(33179));
     }
 
     @Test
@@ -134,5 +134,19 @@ public class CalculatorTest {
         assertFalse(calculator.isPrime(1));
         assertFalse(calculator.isPrime(60));
         assertFalse(calculator.isPrime(120000));
+    }
+
+    @Test
+    void testSqrt() {
+        assertEquals(3, calculator.sqrt(9));
+        assertTrue(1.413 < calculator.sqrt(2) && calculator.sqrt(2) < 1.415);
+    }
+
+    @Test
+    public void testSqrtNegative() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.sqrt(-5);
+        });
+        assertEquals(exception.getMessage(), "Negative Zahlen sind ungültig.");
     }
 }
