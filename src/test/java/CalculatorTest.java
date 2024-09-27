@@ -21,7 +21,7 @@ public class CalculatorTest {
     @AfterEach
     void endTest() {
         System.out.println("Test beendet");
-        calculator = null;
+        //calculator = null;
     }
 
 
