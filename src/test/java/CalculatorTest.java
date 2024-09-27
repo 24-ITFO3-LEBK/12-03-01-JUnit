@@ -10,12 +10,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
-    private Calculator calculator;
+    private Calculator calculator = new Calculator();
 
     @BeforeEach
     void init() {
         System.out.println("Test wird gestartet");
         calculator = new Calculator();
+    }
+    @AfterEach
+    void endTest() {
+        System.out.println("Test beendet");
+        calculator = null;
     }
 
     @Test
@@ -161,10 +166,5 @@ public class CalculatorTest {
     @Test
     public void testIsPrime4() {
         assertTrue( calculator.isPrime(2), "wahr");
-    }
-    @AfterEach
-    void endTest() {
-        System.out.println("Test beendet");
-        calculator = null;
     }
 }
