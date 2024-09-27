@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
-    private Calculator calculator = new Calculator();
+    private Calculator calculator ;
 
     @BeforeEach
     void init() {
@@ -140,11 +140,13 @@ public class CalculatorTest {
     public void testGGT() {
         assertEquals(6, calculator.gcd(54,24), "der ggt ist 6");
     }
+    @Test
     public void testGGT2() {
         assertEquals(54, calculator.gcd(54,432), "der ggt ist 54");
     }
+    @Test
     public void testGGT3() {
-        assertEquals(1, calculator.gcd(54,33), "der ggt ist 1");
+        assertEquals(1, calculator.gcd(54,37), "der ggt ist 1");
     }
 
     @Test
