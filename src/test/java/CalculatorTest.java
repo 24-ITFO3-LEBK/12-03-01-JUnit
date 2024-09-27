@@ -48,6 +48,39 @@ public class CalculatorTest {
             calculator.generateFibonacci(100000000);
         });
     }
+
+    @Test
+    public void testPower(){
+        assertEquals(32,calculator.power(2,5),"2 ^ 5 sollte 32 ergeben");
+        assertEquals(1,calculator.power(15,0),"15 ^ 0 sollte 1 ergeben");
+        assertEquals(0.25,calculator.power(2,-2),"2 ^ (-2) sollte 0.25 ergeben");
+    }
+
+    @Test
+    public void testFac(){
+        assertEquals(120,calculator.fac(5), "Die Fakultät von 5 sollte 120 sein");
+        assertEquals(1,calculator.fac(0), "Die Fakultät von 0 sollte 1 sein");
+        assertNull(calculator.fac(-5), "Die Fakultät von -5 sollte NULL sein");
+    }
+
+    @Test
+    public void testGcd(){
+        assertEquals(6,calculator.gcd(54,24),"Der ggt von 54 und 24 sollte 6 sein");
+        assertEquals(50,calculator.gcd(-100,50),"Der ggt von -100 und 50 sollte 50 sein");
+        assertEquals(1,calculator.gcd(17,3),"Der ggt von 17 und 3 sollte 1 sein");
+        assertEquals(50,calculator.gcd(50,50),"Der ggt von 50 und 50 sollte 50 sein");
+    }
+
+    @Test
+    public void testIsPrime(){
+        assertFalse(calculator.isPrime(-5),"-5 sollte keine Primzahl sein");
+        assertFalse(calculator.isPrime(-6),"-6 sollte keine Primzahl sein");
+        assertFalse(calculator.isPrime(0),"0 sollte keine Primzahl sein");
+        assertFalse(calculator.isPrime(1),"1 sollte keine Primzahl sein");
+        assertFalse(calculator.isPrime(9),"9 sollte keine Primzahl sein");
+        assertTrue(calculator.isPrime(2),"2 sollte eine Primzahl sein");
+        assertTrue(calculator.isPrime(23),"23 sollte eine Primzahl sein");
+    }
     //Aufgabe 4
     @BeforeEach
     public void newCalc(){
@@ -55,7 +88,7 @@ public class CalculatorTest {
     }
 
     @AfterEach
-    public void testEnd(){
+    public void testEnd() {
         System.out.println("Test abgeschlossen");
     }
 
