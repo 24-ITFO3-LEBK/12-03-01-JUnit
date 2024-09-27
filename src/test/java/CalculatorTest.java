@@ -82,6 +82,16 @@ public class CalculatorTest {
         assertTimeout(ofMillis(1), () -> calculator.generateFibonacci(10000), "Die Fibonacci Zahlen von 10.000 können innerhalb einer 1 Millisekunde berechnet werden");
     }
 
+    // Zuerst habe ich den Testcase für 2^3 und 2^0 hinzugefügt
+    // Dann habe ich die power Funktion angelegt und beide Tests dadurch abgedeckt
+    // Danach habe ich noch den Case für 2^-3 hinzugefügt
+    @Test
+    public void testPower() {
+        assertEquals(8, calculator.power(2, 3), "2^3 sollte 8 ergeben");
+        assertEquals(1, calculator.power(2, 0), "2^0 sollte 1 ergeben");
+        assertEquals(0.125, calculator.power(2, -3), "2^-3 sollte 0,125 ergeben");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());
