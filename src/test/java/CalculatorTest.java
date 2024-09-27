@@ -54,6 +54,6 @@ public class CalculatorTest {
 
     @Test
     public void testPowerNull() {
-        assertNull(calculator.power(2, 4));
+        assertEquals(1, calculator.power(2, 0));
     }
 }
