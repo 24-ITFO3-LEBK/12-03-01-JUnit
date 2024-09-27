@@ -75,4 +75,11 @@ public class Calculator {
         }
         return isPrime;
     }
+
+    public double sqrt(double i) {
+        if (i < 0) {
+            throw new IllegalArgumentException("Negative Zahlen sind ungültig.");
+        }
+        return Math.sqrt(i);
+    }
 }
