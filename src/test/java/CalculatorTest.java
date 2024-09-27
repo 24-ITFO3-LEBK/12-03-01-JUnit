@@ -56,4 +56,29 @@ public class CalculatorTest {
     public void testPowerNull() {
         assertEquals(1, calculator.power(2, 0));
     }
+
+    @Test
+    public void testFactorial() {
+        assertEquals(120, calculator.factorial(5));
+    }
+
+    @Test
+    public void testFactorialNull() {
+        assertEquals(1, calculator.factorial(0));
+    }
+
+    @Test
+    public void testgcdCalculation() {
+        assertEquals(6, calculator.gcdCalculation(54, 24));
+    }
+
+    @Test
+    public void testgcdCalculation2() {
+        assertEquals(1, calculator.gcdCalculation(17, 13));
+    }
+
+//    @Test
+//    public void testisPrime() {
+////        assertFalse(true, calculator.gcdCalculation(11));
+//    }
 }

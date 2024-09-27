@@ -25,7 +25,7 @@ public class Calculator {
         fib[0] = 0;
         if (n > 1) {
             fib[1] = 1;
-            for(int i = 2; i < n; i++) {
+            for (int i = 2; i < n; i++) {
                 fib[i] = fib[i - 1] + fib[i - 2];
             }
         }
@@ -35,4 +35,28 @@ public class Calculator {
     public double power(int a, int b) {
         return Math.pow(a, b);
     }
+
+    public int factorial(int n) {
+        int fact = 1;
+        for (int i = 1; i <= n; i++) {
+            fact = fact * i;
+        }
+        return fact;
+    }
+
+    public int gcdCalculation(int a, int b) {
+        //GCD stehts für Greatest common divisor.
+
+        if (b == 0) {
+            return  a;
+        }
+        return this.gcdCalculation(b, a%b);
+    }
+
+//    public boolean isPrime (int a) {
+//        if (a == 11) {
+//            return true;
+//        }
+//        return this.isPrime(a);
+//    }
 }
