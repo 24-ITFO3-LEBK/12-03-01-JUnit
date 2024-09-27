@@ -83,27 +83,27 @@ public class CalculatorTest {
     }
 
     @Test
-    void testPower(){
-        assertEquals(8, calculator.power(2,3));
+    void testPower() {
+        assertEquals(8, calculator.power(2, 3));
     }
 
     @Test
-    void testPowerExpZero(){
-        assertEquals(1, calculator.power(5,0));
+    void testPowerExpZero() {
+        assertEquals(1, calculator.power(5, 0));
     }
 
     @Test
-    void testPowerNegative(){
-        assertEquals(0.04, calculator.power(5,-2));
+    void testPowerNegative() {
+        assertEquals(0.04, calculator.power(5, -2));
     }
 
     @Test
-    void testFactorial(){
+    void testFactorial() {
         assertEquals(120, calculator.factorial(5));
     }
 
     @Test
-    void testFactorialZero(){
+    void testFactorialZero() {
         assertEquals(1, calculator.factorial(0));
     }
 
@@ -113,5 +113,26 @@ public class CalculatorTest {
             calculator.factorial(-5);
         });
         assertEquals(exception.getMessage(), "Eingabewert darf nicht negativ sein.");
+    }
+
+    @Test
+    void testGcd() {
+        assertEquals(15, calculator.gcd(45, 30));
+    }
+
+    @Test
+    void testIsPrime() {
+       assertTrue(calculator.isPrime(3));
+       assertTrue(calculator.isPrime(5));
+       assertTrue(calculator.isPrime(7));
+       assertTrue(calculator.isPrime(59));
+       assertTrue(calculator.isPrime(33179));
+    }
+
+    @Test
+    void testIsNotPrime() {
+        assertFalse(calculator.isPrime(1));
+        assertFalse(calculator.isPrime(60));
+        assertFalse(calculator.isPrime(120000));
     }
 }
