@@ -44,7 +44,7 @@ public class Calculator {
             return power;
 
         }else{
-            //wenn exp negativ, dann mit -1 ultiplizieren f. for Schleife
+            //wenn exp negativ, dann mit -1 multiplizieren f. for Schleife
             exp = exp * (-1);
             for(int i = 1; i <= exp;i++){
                 power = power * base;
@@ -75,6 +75,14 @@ public class Calculator {
     }
 
     public boolean isPrime(int n){
-    return false;
+
+        for(int i = 1;i <= n ; i++){
+            if(i != 1 && i != n){
+                if((n%i) == 0){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
