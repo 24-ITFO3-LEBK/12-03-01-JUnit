@@ -67,7 +67,7 @@ public class Calculator {
 
     public double sqrt(int i) {
         if(i<0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Negative Numbers are not possible!");
         }
         return Math.sqrt(i);
     }
