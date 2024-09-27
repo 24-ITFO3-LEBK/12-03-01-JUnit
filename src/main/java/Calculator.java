@@ -31,6 +31,9 @@ public class Calculator {
         return fib;
     }
 
+    // Hatte zuerst gedacht, dass bei einem negativen Exponenten
+    // eine Wurzel gezogen werden muss. Das hat nicht funktioniert.
+    // Dann ist mir eingefallen, dass x^(-y) ja nur 1/(x^y) ist, dann war es einfach
     public double power(double base, int expo){
         boolean neg = false;
         if (expo < 0){
@@ -45,6 +48,7 @@ public class Calculator {
         else return res;
     }
 
+    //First try
     public Integer fac(int n){
         if(n<0) return null;
         int res = 1;
@@ -54,6 +58,7 @@ public class Calculator {
         return res;
     }
 
+    //Hat erst nicht funktioniert, musste den Code nochmal anpassen
     public int gcd(int a, int b){
         int invDiv = 1;
         int div;
@@ -69,6 +74,7 @@ public class Calculator {
         }
     }
 
+    //First try
     public boolean isPrime(int num){
         if(num <= 1) return false;
         for(int i = 2; i < num; i++){
@@ -77,5 +83,10 @@ public class Calculator {
         return true;
     }
 
+    //Anforderung erfüllt
+    public Double sqrt(double num){
+        if(num < 0) return null;
+        return Math.sqrt(num);
+    }
 
 }

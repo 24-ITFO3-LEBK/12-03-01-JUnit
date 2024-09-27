@@ -81,6 +81,12 @@ public class CalculatorTest {
         assertTrue(calculator.isPrime(2),"2 sollte eine Primzahl sein");
         assertTrue(calculator.isPrime(23),"23 sollte eine Primzahl sein");
     }
+
+    @Test
+    public void testSqrt(){
+        assertNull(calculator.sqrt(-1),"Die Quadratwurzel von -1 sollte NULL sein");
+        assertEquals(3.0, calculator.sqrt(9),0.001);
+    }
     //Aufgabe 4
     @BeforeEach
     public void newCalc(){
