@@ -36,21 +36,43 @@ public class Calculator {
     }
 
     public int factorial(int num) {
-        if(num < 0){
+        if (num < 0) {
             throw new IllegalArgumentException("Eingabewert darf nicht negativ sein.");
-        }
+        } else if (num == 0) return 1;
         int sum = 0;
-        if (num > 0) {
-            while (num > 1) {
-                if (sum == 0) {
-                    sum = num * (num - 1);
-                } else {
-                    sum = sum * (num - 1);
-                }
-                num--;
+        while (num > 1) {
+            if (sum == 0) {
+                sum = num * (num - 1);
+            } else {
+                sum = sum * (num - 1);
             }
+            num--;
         }
         return sum;
     }
 
+    public int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+
+    public boolean isPrime(int num) {
+        if (num == 0 || num == 1) {
+            return false;
+        } else if (num == 3) {
+            return true;
+        }
+        int divisor = num / 2;
+        boolean isPrime = false;
+        while (divisor > 1) {
+            if (num % divisor != 0) {
+                isPrime = true;
+                divisor--;
+            } else {
+                isPrime = false;
+                break;
+            }
+        }
+        return isPrime;
+    }
 }
