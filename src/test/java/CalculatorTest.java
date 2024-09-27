@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test;
+
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
@@ -27,8 +30,80 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testdivideex() {
-        assertEquals(2, calculator.divide(4, 0), "4 / 0 sollte exception ergeben");
+    public void testgenerateFibonacci() { assertArrayEquals(new int[]{0,1,1,2,3}, calculator.generateFiboacci(5), "stimm so");}
+
+    @Test
+    public void testfibaufnull() {assertNotNull(calculator.generateFiboacci(0));}
+
+
+    @Test
+    public void fibtestduration() {
+        assertTimeout(Duration.ofMillis(5000), () -> {
+            calculator.generateFiboacci(100);
+        });}
+
+    @Test
+    public void  Powertestpositive()
+    {
+        assertEquals(16, calculator.powercalc(2,4));
     }
 
+    @Test
+    public void  Powertestnull()
+    {
+        assertEquals(1, calculator.powercalc(5,0));
+    }
+
+    @Test
+    public void  Powertestnegative()
+    {
+        assertEquals(-8, calculator.powercalc(-2,3));
+    }
+
+    @Test
+    public void  Factestnull()
+    {
+        assertEquals(1, calculator.factorial(0));
+    }
+
+
+    @Test
+    public void  facttest()
+    {
+        assertEquals(120, calculator.factorial(5));
+    }
+
+    @Test
+    public void gcd()
+    {
+        assertEquals(6, calculator.gcd(54, 24));
+    }
+
+    @Test
+    public void primetest()
+    {
+        assertTrue(calculator.isPrime(11));
+    }
+
+    @Test
+    public void primetestfalse()
+    {
+        assertFalse(calculator.isPrime(6));
+    }
+
+    @Test
+    public void squaretest() throws Exception {
+        assertEquals(3 ,calculator.sqrt(9));
+    }
+
+    @Test
+    public void squaretestex() throws Exception {
+        assertEquals(3 ,calculator.sqrt(-9));
+    }
+
+
+    @Test
+    public void squaretestpi() throws Exception {
+        assertEquals(1.41, calculator.sqrt(2), 0.2);
+    }
 }
