@@ -31,4 +31,26 @@ public class Calculator {
         return fib;
     }
 
+    public double power(int base, int exponent) {
+        return Math.pow(base, exponent);
+    }
+
+    public int factorial(int num) {
+        if(num < 0){
+            throw new IllegalArgumentException("Eingabewert darf nicht negativ sein.");
+        }
+        int sum = 0;
+        if (num > 0) {
+            while (num > 1) {
+                if (sum == 0) {
+                    sum = num * (num - 1);
+                } else {
+                    sum = sum * (num - 1);
+                }
+                num--;
+            }
+        }
+        return sum;
+    }
+
 }

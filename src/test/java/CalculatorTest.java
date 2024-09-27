@@ -81,4 +81,37 @@ public class CalculatorTest {
             calculator.generateFibonacci(100000000);
         });
     }
+
+    @Test
+    void testPower(){
+        assertEquals(8, calculator.power(2,3));
+    }
+
+    @Test
+    void testPowerExpZero(){
+        assertEquals(1, calculator.power(5,0));
+    }
+
+    @Test
+    void testPowerNegative(){
+        assertEquals(0.04, calculator.power(5,-2));
+    }
+
+    @Test
+    void testFactorial(){
+        assertEquals(120, calculator.factorial(5));
+    }
+
+    @Test
+    void testFactorialZero(){
+        assertEquals(1, calculator.factorial(0));
+    }
+
+    @Test
+    public void testFactorialNegative() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.factorial(-5);
+        });
+        assertEquals(exception.getMessage(), "Eingabewert darf nicht negativ sein.");
+    }
 }
