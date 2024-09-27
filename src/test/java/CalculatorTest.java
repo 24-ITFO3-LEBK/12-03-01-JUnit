@@ -1,23 +1,9 @@
-import org.junit.jupiter.api.*;
-import java.time.Duration;
-import java.util.Arrays;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
-    private Calculator calculator;
-
-    @BeforeEach
-    public void createNewTestObject() {
-        calculator = new Calculator();
-        System.out.println("Starting test");
-    }
-
-    @AfterEach
-    public void finishTest() {
-        System.out.println("Finished test");
-    }
+    private final Calculator calculator = new Calculator();
 
     @Test
     public void testAdd() {
