@@ -45,4 +45,20 @@ public class Calculator {
 
         return fact;
     }
+
+    public Double gcd(int a, int b) {
+        if (a == 0 || b == 0) {
+            return null;
+        }
+
+        int biggerNumber = Math.max(a, b);
+
+        for (int i = biggerNumber; i > 0; i--) {
+            if (a % i == 0 && b % i == 0) {
+                return (double) i;
+            }
+        }
+
+        return null;
+    }
 }

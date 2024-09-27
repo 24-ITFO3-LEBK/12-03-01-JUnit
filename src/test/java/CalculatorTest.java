@@ -101,6 +101,15 @@ public class CalculatorTest {
         assertEquals(3628800, calculator.factorial(10), "Die Fakultät von 10 sollte 3628800 ergeben");
     }
 
+    // Hier habe ich erst alle Testcases angelegt und hinterher den Code geschrieben, um die Tests auf grün zu bekommen
+    @Test
+    public void testGcd() {
+        assertEquals(6, calculator.gcd(54, 24), "Der größte gemeinsame Teiler von 54 und 24 ist 6");
+        assertEquals(6, calculator.gcd(24, 54), "Der größte gemeinsame Teiler von 24 und 54 ist 6");
+        assertEquals(1, calculator.gcd(17, 13), "Der größte gemeinsame Teiler von 54 und 24 ist 1, da es Primzahlen sind");
+        assertNull(calculator.gcd(20, 0), "Der größte gemeinsame Teiler von 20 und 0 ist null, da es keinen gemeinsamen Teiler gibt");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());
