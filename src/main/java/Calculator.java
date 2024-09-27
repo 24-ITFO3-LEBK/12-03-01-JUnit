@@ -55,4 +55,48 @@ public class Calculator {
     	
     	return returnValue;
     }
+    
+    public long factorial(int n) {
+    	long returnValue = 1;
+    	
+    	for(int i = 2; i <= n; i++) {
+    		returnValue = returnValue * i;
+    	}
+    	
+    	return returnValue;
+    }
+    
+    public int gcd(int a, int b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        
+        return a;
+    }
+    
+    public boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public double sqrt(double n) {
+        if (n < 0) {
+            return -1;
+        }
+        return Math.sqrt(n);
+    }
 }
