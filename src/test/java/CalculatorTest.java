@@ -18,13 +18,6 @@ public class CalculatorTest {
         calculator = new Calculator();
     }
 
-    @AfterEach
-    void endTest() {
-        System.out.println("Test beendet");
-        //calculator = null;
-    }
-
-
     @Test
     public void testAdd() {
         assertEquals(5, calculator.add(2, 3), "2 + 3 sollte 5 ergeben");
@@ -168,5 +161,10 @@ public class CalculatorTest {
     @Test
     public void testIsPrime4() {
         assertTrue( calculator.isPrime(2), "wahr");
+    }
+    @AfterEach
+    void endTest() {
+        System.out.println("Test beendet");
+        calculator = null;
     }
 }
