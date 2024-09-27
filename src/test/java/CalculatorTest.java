@@ -92,6 +92,15 @@ public class CalculatorTest {
         assertEquals(0.125, calculator.power(2, -3), "2^-3 sollte 0,125 ergeben");
     }
 
+    // Auch hier hab ich erst die beiden Testcases für 1! und 5! angelegt und dann die Funktion angelegt
+    // Zum Schluss habe ich noch einen Test für eine möglichst große Zahl hinzugefügt
+    @Test
+    public void testFactorial() {
+        assertEquals(1, calculator.factorial(0), "Die Fakultät von 0 sollte 1 ergeben");
+        assertEquals(120, calculator.factorial(5), "Die Fakultät von 5 sollte 120 ergeben");
+        assertEquals(3628800, calculator.factorial(10), "Die Fakultät von 10 sollte 3628800 ergeben");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());
