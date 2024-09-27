@@ -72,4 +72,29 @@ public class CalculatorTest {
     @Test
     public void fibRuntimeTest(){
         assertTimeout(Duration.ofSeconds(1), ()->calculator.generateFibonacci(45000), "Hohe Zahlen sollten innerhalb von einer Sekunde zur Fibonaccireihe umgewandelt werden");    }
+
+    @Test
+    public void powerTest(){
+        assertEquals(calculator.power(2,3), 8.0);
+        assertEquals(calculator.power(5,0), 1.0);
+        assertEquals(calculator.power(2, -3), 0.125);}
+
+    @Test
+    public void factorialTest(){
+        assertEquals(calculator.factorial(5), 120);
+        assertEquals(calculator.factorial(0), 1);
     }
+
+    @Test
+    public void gcdTest(){
+        assertEquals(6, calculator.gcd(54, 24));
+        assertEquals(1, calculator.gcd(7, 13));
+    }
+
+    @Test
+    public void isPrimeTest(){
+        assertFalse(calculator.isPrime(54));
+        assertTrue(calculator.isPrime(7));
+    }
+    }
+

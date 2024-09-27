@@ -30,4 +30,38 @@ public class Calculator {
         }
         return fib;
     }
+
+    public double power(int base, int exponent){
+        return Math.pow(base, exponent);
+    }
+
+    public int factorial(int n){
+        int result = 1;
+        while (n > 0){
+            result = result * n;
+            n--;
+        }
+        return result;
+    }
+
+    public int gcd(int a, int b){
+        int c;
+        while (a != b) {
+            if (a < b) {
+                c = a;
+                a = b;
+                b = c;
+            }
+            a = a - b;
+        }
+        return b;}
+
+    public boolean isPrime(int n){
+        if (n <= 1)
+            return false;
+        for (int i = 2; i < n; i++)
+            if (n % i == 0)
+                return false;
+        return true;
+    }
 }
