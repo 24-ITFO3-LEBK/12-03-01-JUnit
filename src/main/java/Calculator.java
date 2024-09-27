@@ -56,6 +56,7 @@ public class Calculator {
         return erg;
     }
 
+
     public int gcd(int a, int b) {
         int i;
         if (a < b)
