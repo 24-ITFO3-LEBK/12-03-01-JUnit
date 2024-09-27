@@ -125,6 +125,18 @@ public class CalculatorTest {
         assertFalse(calculator.isPrime(9), "Die Zahl 9 ist keine Primzahl");
     }
 
+    // Ich habe zuerst die oberen 3 Testcases angelegt und dann die Funktion implementiert
+    // Danach habe ich noch die Exception für negative Zahlen eingebaut und dafür einen Testcase angelegt
+    @Test
+    public void testSqrt() {
+        assertEquals(1.414, calculator.sqrt(2), 0.001, "Die Quadratwurzel von 2 ist ungefähr 1.414");
+        assertEquals(3, calculator.sqrt(9), 0.0001, "Die Quadratwurzel von 9 ist 3");
+        assertEquals(0, calculator.sqrt(0), 0.0001, "Die Quadratwurzel von 0 ist 0");
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.sqrt(-1));
+        assertEquals("Number have to be positiv.", exception.getMessage());
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());

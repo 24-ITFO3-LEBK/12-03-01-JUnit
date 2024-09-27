@@ -75,4 +75,12 @@ public class Calculator {
 
         return true;
     }
+
+    public double sqrt(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Number have to be positiv.");
+        }
+
+        return Math.sqrt(n);
+    }
 }
