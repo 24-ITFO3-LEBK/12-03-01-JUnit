@@ -3,7 +3,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,7 +43,7 @@ public class CalculatorTest {
     @Test
     public void testFibonacci() {
         // Array für n == 0 leer
-        assertTrue(calculator.generateFibonacci(0).length == 0);
+        assertEquals(0, calculator.generateFibonacci(0).length);
         //generierte Array für n > 0 nicht null
         assertNotNull(calculator.generateFibonacci(5));
         // die ersten beiden Werte der Fibonacci-Reihe korrekt sind
@@ -59,5 +58,25 @@ public class CalculatorTest {
         assertTimeout(Duration.ofSeconds(1),() ->calculator.generateFibonacci(100));
     }
 
+    @Test
+    public void testExpo() {assertEquals(8, calculator.power(2, 3));}
+    @Test
+    public void testFacto() {assertEquals(120, calculator.factorial(5));}
+    @Test
+    public void testFactoNull() {assertEquals(1, calculator.factorial(0));}
+    @Test
+    public void testggt() {assertEquals(6, calculator.gcd(54, 24));
+                           assertEquals(1, calculator.gcd(17, 13));}
+
+    @Test
+    public void testPrime(){assertTrue(calculator.isPrime(11));}
+    @Test
+    public void testPrimeOne(){assertFalse(calculator.isPrime(1));}
+    @Test
+    public void testNotPrime(){assertFalse(calculator.isPrime(9));}
+    @Test
+    public void testsqrt(){assertEquals(3.0, calculator.sqrt(9), 0.0001);}
+    @Test
+    public void testsqrtNegative(){assertThrows(IllegalArgumentException.class,()->calculator.sqrt(-1));}
 
 }
