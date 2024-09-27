@@ -30,4 +30,14 @@ public class Calculator {
     	}
     	return fib;
     }
+    
+    public int power(int base, int exponent) {
+    	int returnValue = base;
+    	
+    	for(int i = exponent - 1; i > 0; i--) {
+    		returnValue = returnValue * base;
+    	}
+    	
+    	return returnValue;
+    }
 }

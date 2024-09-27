@@ -40,4 +40,43 @@ public class CalculatorTest {
     	assertTrue(calculator.generateFibonacci(2)[0] == 0);
     	assertTrue(calculator.generateFibonacci(2)[1] == 1);
     }
+    
+    /*@Test
+    public void testGenerateFibonacciFirstFiveValues() {
+    	int[] number = new int[] {1,5,8,3,6};
+    	
+    	for (int i : number) {
+    		  int[] resultNumbers = new int[i];
+    		  for (int num = 0; num <= i; num++) {
+    			  resultNumbers[num]
+    		  }
+    		}
+    	
+    	assertArrayEquals(calculator.generateFibonacci(5), new int[] {0,1,1,2,3});
+    }*/
+    
+    @Test
+    public void testPower() {
+    	assertEquals(8, calculator.power(2, 3), "2³ sollte 8 ergeben");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
