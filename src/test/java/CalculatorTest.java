@@ -74,4 +74,45 @@ public class CalculatorTest {
             assertArrayEquals(slicedTestResult, expectedResult);
         });
     }
+
+    @Test
+    public void testPower_ShouldReturnExpectedResults() {
+        assertEquals(8, calculator.power(2, 3));
+        assertEquals(1, calculator.power(5, 0));
+        assertEquals(0.125, calculator.power(2, -3));
+    }
+
+    @Test
+    public void testFactorial_ShouldReturnExpectedResults() {
+        assertEquals(120, calculator.factorial(5));
+        assertEquals(3_628_800, calculator.factorial(10));
+    }
+
+    @Test
+    public void testGcd_ShouldReturnExpectedResults() {
+        assertEquals(6, calculator.gcd(54, 24));
+        assertEquals(1, calculator.gcd(17, 13));
+    }
+
+    @Test
+    public void isPrime_ShouldReturnExpectedResults() {
+        assertTrue(calculator.isPrime(2));
+        assertTrue(calculator.isPrime(11));
+        assertFalse(calculator.isPrime(4));
+        assertFalse(calculator.isPrime(9));
+    }
+
+    @Test
+    public void sqrt_ShouldReturnExpectedResults() {
+        assertEquals(3.0, calculator.sqrt(9));
+        assertEquals(1.4, calculator.sqrt(2));
+    }
+
+    @Test
+    public void sqrt_WithNegativeInput_ShouldThrow() {
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+        assertThrows(expectedException, () -> {
+            calculator.sqrt(-1);
+        });
+    }
 }
