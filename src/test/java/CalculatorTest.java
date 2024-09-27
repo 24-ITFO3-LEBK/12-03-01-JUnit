@@ -1,9 +1,23 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.time.Duration;
+import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
     private final Calculator calculator = new Calculator();
+
+    @BeforeEach
+    public void InitTest() {
+        System.out.println("Starting test..");
+    }
+
+    @AfterEach
+    public void CleanUpTest() {
+        System.out.println("Finished test!");
+    }
 
     @Test
     public void testAdd() {
@@ -57,6 +71,7 @@ public class CalculatorTest {
         assertTimeout(expectedDuration, () -> {
             int[] testResult = calculator.generateFibonacci(100);
             int[] slicedTestResult = Arrays.copyOfRange(testResult, 0, 5);
+
             assertArrayEquals(slicedTestResult, expectedResult);
         });
     }
