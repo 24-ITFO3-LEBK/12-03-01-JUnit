@@ -1,20 +1,13 @@
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
-    private Calculator calculator;
-
-    @BeforeEach
-    public void onTestStart() {
-        calculator = new Calculator();
-    }
+    private final Calculator calculator = new Calculator();
 
     @AfterEach
     public void onTestEnd() {
