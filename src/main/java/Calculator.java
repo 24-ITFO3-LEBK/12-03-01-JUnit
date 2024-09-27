@@ -30,4 +30,51 @@ public class Calculator {
         }
         return fib;
     }
+
+    public double power(int base ,int exp){
+      double power = 1;
+
+        if(exp == 0){
+            return 1;
+        } else if(exp >0){
+            // for-Schleife muss mit 1 gestartet werden
+            for(int i = 1; i <= exp;i++){
+              power = power * base;
+            }
+            return power;
+
+        }else{
+            //wenn exp negativ, dann mit -1 ultiplizieren f. for Schleife
+            exp = exp * (-1);
+            for(int i = 1; i <= exp;i++){
+                power = power * base;
+            }
+            return 1/power;
+        }
+
+    }
+
+    public int factorial(int n){
+     int factorial = 1;
+        if(n == 0){
+            return 1;
+        } else{
+            for(int i = 1; i<= n; i++){
+              factorial = factorial * i;
+            }
+        }
+        return factorial;
+    }
+
+    public int gcd(int a, int b){
+        //rekursive Variante genommen,
+        if( b == 0){
+            return a;
+        }
+        return gcd(b,a % b);
+    }
+
+    public boolean isPrime(int n){
+    return false;
+    }
 }

@@ -91,4 +91,61 @@ public class CalculatorTest {
        System.out.println("Test abgeschlossen");
     }
 
+    @Test
+    public void testPower(){
+        assertEquals(8,calculator.power(2,3));
+    }
+    @Test
+    public void testPower2(){
+        assertEquals(25,calculator.power(5,2));
+    }
+    @Test
+    public void testPowerExpZero(){
+        assertEquals(1,calculator.power(5,0));
+    }
+
+    @Test
+    public void testPowerNegativeExp(){
+        assertEquals(0.125,calculator.power(2,-3));
+    }
+
+    @Test
+    public void testFactorial(){
+        assertEquals(120,calculator.factorial(5));
+    }
+
+    @Test
+    public void testFactorialZero(){
+        assertEquals(1,calculator.factorial(0));
+    }
+
+    @Test
+    public void testGcd(){
+        assertEquals(6,calculator.gcd(54,24));
+    }
+
+    @Test
+    public void testGcdWithPrime(){
+        assertEquals(1,calculator.gcd(17,13));
+    }
+
+    @Test
+    public void testIsPrime(){
+        assertTrue(calculator.isPrime(11));
+    }
+
+    @Test
+    public void testIsPrimeFalse(){
+        assertFalse(calculator.isPrime(9));
+    }
+
+    @Test
+    public void isPrimeFalse2(){
+        assertFalse(calculator.isPrime(4));
+    }
+
+    @Test
+    public void testIsPrimeTrue(){
+        assertTrue(calculator.isPrime(2));
+    }
 }
