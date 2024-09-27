@@ -110,6 +110,21 @@ public class CalculatorTest {
         assertNull(calculator.gcd(20, 0), "Der größte gemeinsame Teiler von 20 und 0 ist null, da es keinen gemeinsamen Teiler gibt");
     }
 
+    // Habe erst alle Testcases (Bis auf 0 und 1) angelegt und dann den die Funktion geschrieben
+    // Als der Test grün war, habe ich noch die Test Cases für 0 und 1 hinzugefügt und den Code nochmal angepasst
+    @Test
+    public void testIsPrime() {
+        assertTrue(calculator.isPrime(2), "Die Zahl 2 ist eine Primzahl");
+        assertTrue(calculator.isPrime(3), "Die Zahl 3 ist eine Primzahl");
+        assertTrue(calculator.isPrime(11), "Die Zahl 11 ist eine Primzahl");
+
+        assertFalse(calculator.isPrime(0), "Die Zahl 0 ist keine Primzahl");
+        assertFalse(calculator.isPrime(1), "Die Zahl 1 ist keine Primzahl");
+        assertFalse(calculator.isPrime(4), "Die Zahl 4 ist keine Primzahl");
+        assertFalse(calculator.isPrime(8), "Die Zahl 8 ist keine Primzahl");
+        assertFalse(calculator.isPrime(9), "Die Zahl 9 ist keine Primzahl");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());
