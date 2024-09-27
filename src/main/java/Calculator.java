@@ -30,4 +30,52 @@ public class Calculator {
         }
         return fib;
     }
+
+    public double power(double base, int expo){
+        boolean neg = false;
+        if (expo < 0){
+            expo *= -1;
+            neg = true;
+        }
+        double res = 1;
+        for(int i = 0; i < expo; i++){
+            res *= base;
+        }
+        if(neg) return 1 / res;
+        else return res;
+    }
+
+    public Integer fac(int n){
+        if(n<0) return null;
+        int res = 1;
+        for(int i = 1; i <= n; i++){
+            res *= i;
+        }
+        return res;
+    }
+
+    public int gcd(int a, int b){
+        int invDiv = 1;
+        int div;
+        while(true){
+            if(a % invDiv == 0){
+                div = a / invDiv;
+                if(b % div == 0){
+                    if(div<0) return div*-1;
+                    else return div;
+                }
+            }
+            invDiv++;
+        }
+    }
+
+    public boolean isPrime(int num){
+        if(num <= 1) return false;
+        for(int i = 2; i < num; i++){
+            if(num % i == 0) return false;
+        }
+        return true;
+    }
+
+
 }
