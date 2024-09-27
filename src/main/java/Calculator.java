@@ -31,11 +31,26 @@ public class Calculator {
     	return fib;
     }
     
-    public int power(int base, int exponent) {
-    	int returnValue = base;
+    public double power(int base, int exponent) {
+    	double returnValue = base;
+    	int posExponent = 0;
     	
-    	for(int i = exponent - 1; i > 0; i--) {
-    		returnValue = returnValue * base;
+    	if(exponent >= 0) {
+    		posExponent = exponent;
+    	} else {
+    		posExponent = exponent * (-1);
+    	}
+    	
+    	if (exponent == 0) {
+    		returnValue = 0;
+    	} else {
+    		for(int i = posExponent - 1; i > 0; i--) {
+	    		returnValue = returnValue * base;
+	    	}
+    		
+    		if (exponent < 0) {
+    			returnValue = 1 / returnValue;
+    		}
     	}
     	
     	return returnValue;

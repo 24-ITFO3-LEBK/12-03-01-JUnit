@@ -56,8 +56,18 @@ public class CalculatorTest {
     }*/
     
     @Test
-    public void testPower() {
+    public void testPowerPos() {
     	assertEquals(8, calculator.power(2, 3), "2³ sollte 8 ergeben");
+    }
+    
+    @Test
+    public void testPowerNeg() {
+    	assertEquals(0.25, calculator.power(2, -2), "2 hoch -2 sollte 0.25 ergeben");
+    }
+    
+    @Test
+    public void testPowerNull() {
+    	assertEquals(0, calculator.power(2, 0), "2 hoch 0 sollte 0 ergeben");
     }
     
     
