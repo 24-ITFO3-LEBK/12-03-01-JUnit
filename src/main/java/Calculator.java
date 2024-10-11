@@ -1,3 +1,9 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -82,5 +88,17 @@ public class Calculator {
         }
 
         return Math.sqrt(n);
+    }
+
+    /**
+     * Returns the sum of elements in this list. Use the BinaryOperator for
+     * this operation which is equal to the IntStream Interface
+     *
+     * @return the sum of elements in this list
+     */
+    public int sum(List<Integer> list) {
+        Stream<Integer> stream = list.stream();
+
+        return stream.reduce(0, Integer::sum);
     }
 }

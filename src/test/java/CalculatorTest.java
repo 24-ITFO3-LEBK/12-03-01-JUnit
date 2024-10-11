@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static java.time.Duration.ofMillis;
@@ -135,6 +136,13 @@ public class CalculatorTest {
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.sqrt(-1));
         assertEquals("Number have to be positiv.", exception.getMessage());
+    }
+
+    @Test
+    public void testSum() {
+        List<Integer> list = Arrays.asList(0, 1, 4, 32, 3, 45, 15);
+
+        assertEquals(100, calculator.sum(list), "Die Summe der Liste ist 100");
     }
 
     @AfterEach
