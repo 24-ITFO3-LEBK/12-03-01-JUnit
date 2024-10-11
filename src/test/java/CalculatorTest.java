@@ -3,6 +3,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -147,5 +150,44 @@ public class CalculatorTest {
     @Test
     public void testIsPrimeTrue(){
         assertTrue(calculator.isPrime(2));
+    }
+
+    @Test
+    public void testSumWithStreams(){
+        int [] numbersToAdd = {1,2,3,4};
+        assertEquals(10,calculator.sumWithStreams(numbersToAdd));
+    }
+
+    @Test
+    public void findMaxValue(){
+        int [] numbersToAdd = {1,2,3,4};
+        assertEquals(4,calculator.findMaxValue(numbersToAdd));
+    }
+
+    @Test
+    public void findMinValue(){
+        int [] numbersToAdd = {1,2,3,4};
+        assertEquals(1,calculator.findMinValue(numbersToAdd));
+    }
+
+    @Test
+    public void findMinValueThrowExc(){
+        int [] numbersToAdd = {};
+        assertThrows(NoSuchElementException.class, ()->calculator.findMinValue(numbersToAdd));
+    }
+
+    @Test
+    public void average(){
+        int [] numbersToAdd = {1,1,2,4};
+        assertEquals(2,calculator.average(numbersToAdd));
+    }
+
+    @Test
+    public void evenNumbers(){
+        int [] numbersToAdd = {1,1,2,3,4,5};
+        List<Integer> expectedList = new ArrayList<>();
+        expectedList.add(2);
+        expectedList.add(4);
+        assertEquals(expectedList,calculator.evenNumbers(numbersToAdd));
     }
 }

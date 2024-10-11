@@ -1,3 +1,12 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -85,4 +94,25 @@ public class Calculator {
         }
         return true;
     }
+
+    public int sumWithStreams(int[] numbersToAdd){
+        return Arrays.stream(numbersToAdd).sum();
+    }
+
+    public int findMaxValue(int[] numbers){
+         return Arrays.stream(numbers).max().orElseThrow();
+    }
+
+    public int findMinValue(int[] numbers){
+        return Arrays.stream(numbers).min().orElseThrow();
+    }
+
+    public int average(int[] numbers){
+        return Arrays.stream(numbers).sum() / numbers.length;
+    }
+
+    public List<Integer> evenNumbers(int[] numbers){
+        return Arrays.stream(numbers).filter(n -> n % 2 == 0).boxed().collect(toList());
+    }
+
 }
