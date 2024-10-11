@@ -60,6 +60,26 @@ public class CalculatorTest {
         assertTimeout(Duration.ofMillis(1000), () -> { calculator.generateFibonacci(100000000); });
     }
 
+    @Test
+    public void testSumme(){
+        assertEquals(120, calculator.summe(new int[]{20, 40, 60}));
+    }
+
+    @Test
+    public void testDurchschnitt(){
+        assertEquals(40, calculator.durchschnitt(new int[]{20, 40, 60}));
+    }
+
+    @Test
+    public void testMaximum(){
+        assertEquals(60, calculator.summe(new int[]{20, 40, 60}));
+    }
+
+    @Test
+    public void testMinimum(){
+        assertEquals(20, calculator.summe(new int[]{20, 40, 60}));
+    }
+
     @BeforeEach
     public void onTestStart(){
         calculator = new Calculator();

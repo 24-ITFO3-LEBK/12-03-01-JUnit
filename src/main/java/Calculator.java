@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Calculator {
@@ -104,13 +102,18 @@ public class Calculator {
         return Arrays.stream(ganzzahlen).min();
     }
 
-    public int[] geradeZahlen(int[] ganzzahlen) {
-        return Arrays.stream(ganzzahlen).filter(n -> n % 2 == 0).toArray();
+    public List<Integer> geradeZahlen(Integer[] ganzzahlen) {
+        return Arrays.stream(ganzzahlen).filter(n -> n % 2 == 0).collect(Collectors.toList());
     }
 
     public double[] sqrt2(double[] ganzzahlen){
         return Arrays.stream(ganzzahlen).filter(n -> n % 2 == 0).map(this::sqrt).toArray();
     }
 
-  
+    public Map<Double, Double> quadratGeradeZahlen(Integer[] ganzzahlen) {
+        List<Integer> integerList = geradeZahlen(ganzzahlen);
+        return integerList.stream().collect(Collectors.toMap(
+                Integer::doubleValue, n -> power(n,2)
+        ));
+    }
 }
