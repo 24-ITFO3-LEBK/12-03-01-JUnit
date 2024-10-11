@@ -1,6 +1,10 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+
 public class CalculatorTest {
 
     private final Calculator calculator = new Calculator();
@@ -109,5 +113,65 @@ public class CalculatorTest {
     @Test
     public void testSquareRootNeg() {
     	assertEquals(-1, calculator.sqrt(-10), 0.0001, "10 sollte -1 wiedergeben");
+    }
+    
+    @Test
+    public void testSumme() {
+        assertEquals(21, calculator.summe(new int[]{1, 2, 3, 4, 5, 6}));
+    }
+
+    @Test
+    public void testSummeForEmpty() {
+        assertEquals(0, calculator.summe(new int[] {}));
+    }
+
+    @Test
+    public void testDurchschnitt() {
+        assertEquals(3.5, calculator.durchschnitt(new int[]{1, 2, 3, 4, 5, 6}), 0.001);
+    }
+
+    @Test
+    public void testDurchschnittForEmpty() {
+        assertEquals(0.0, calculator.durchschnitt(new int[] {}), 0.001);
+    }
+
+    @Test
+    public void testMaximalwert() {
+        assertEquals(6, calculator.maximalwert(new int[]{1, 2, 3, 4, 5, 6}));
+    }
+
+    @Test
+    public void testMaximalwertForEmpty() {
+        assertEquals(Integer.MIN_VALUE, calculator.maximalwert(new int[] {}));
+    }
+
+    @Test
+    public void testMinimalwert() {
+        assertEquals(1, calculator.minimalwert(new int[]{1, 2, 3, 4, 5, 6}));
+    }
+
+    @Test
+    public void testMinimalwertForEmpty() {
+        assertEquals(Integer.MAX_VALUE, calculator.minimalwert(new int[]{}));
+    }
+
+    @Test
+    public void testFilternGeradeZahlen() {
+        assertEquals(Arrays.asList(2, 4, 6), calculator.filternGeradeZahlen(new int[]{1, 2, 3, 4, 5, 6}));
+    }
+
+    @Test
+    public void testQuadratischeWurzeln() {
+        assertEquals(Arrays.asList(Math.sqrt(2), Math.sqrt(4), Math.sqrt(6)), calculator.quadratischeWurzeln(new int[]{1, 2, 3, 4, 5, 6}));
+    }
+
+    @Test
+    public void testMapGeradeZahlenUndQuadrate() {
+        assertEquals(Map.of(2, 4, 4, 16, 6, 36), calculator.mapGeradeZahlenUndQuadrate(new int[]{1, 2, 3, 4, 5, 6}));
+    }
+
+    @Test
+    public void testMapGeradeZahlenUndQuadrate_EmptyArray() {
+        assertEquals(Map.of(), calculator.mapGeradeZahlenUndQuadrate(new int[] {}));
     }
 }
