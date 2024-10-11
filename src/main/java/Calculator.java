@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
@@ -116,5 +117,14 @@ public class Calculator {
         }
 
         return average.getAsDouble();
+    }
+
+    /**
+     * @return the maximum value of the elements in this list
+     */
+    public double max(List<Integer> list) {
+        Stream<Integer> stream = list.stream();
+
+        return stream.max(Comparator.comparingInt(a -> a)).orElseThrow();
     }
 }

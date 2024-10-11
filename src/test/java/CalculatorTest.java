@@ -152,6 +152,13 @@ public class CalculatorTest {
         assertEquals(60, calculator.average(list), "Der Durchschnitt der Liste ist 60");
     }
 
+    @Test
+    public void testMax() {
+        List<Integer> list = Arrays.asList(0, 1, 4, 32, 3, 45, 15);
+
+        assertEquals(45, calculator.max(list), "Das Maximum der Liste ist 45");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());
