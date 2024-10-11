@@ -3,10 +3,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
-
     private final Calculator calculator = new Calculator();
 
     @BeforeEach
@@ -113,5 +115,82 @@ public class CalculatorTest {
     public void sqrt_WithNegativeInput_ShouldThrow() {
         Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
         assertThrows(expectedException, () -> calculator.sqrt(-1));
+    }
+
+    @Test
+    public void sum_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
+        int expectedResult = 15;
+        int testResult = calculator.sum(input);
+
+        assertEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void sum_WithEmptyList_ShouldThrow() {
+        List<Integer> input = new LinkedList<>();
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        assertThrows(expectedException, () -> calculator.sum(input));
+    }
+
+    @Test
+    public void avg_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
+        double expectedResult = 3d;
+        double testResult = calculator.avg(input);
+
+        assertEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void avg_WithEmptyList_ShouldThrow() {
+        List<Integer> input = new LinkedList<>();
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        assertThrows(expectedException, () -> calculator.avg(input));
+    }
+
+    @Test
+    public void max_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
+        int expectedResult = 5;
+        int testResult = calculator.max(input);
+
+        assertEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void max_WithEmptyList_ShouldThrow() {
+        List<Integer> input = new LinkedList<>();
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        assertThrows(expectedException, () -> calculator.max(input));
+    }
+
+    @Test
+    public void min_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
+        int expectedResult = 1;
+        int testResult = calculator.min(input);
+
+        assertEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void min_WithEmptyList_ShouldThrow() {
+        List<Integer> input = new LinkedList<>();
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        assertThrows(expectedException, () -> calculator.min(input));
+    }
+
+    @Test
+    public void even_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> expectedResult = Arrays.asList(2, 4, 6, 8, 10);
+        List<Integer> testResult = calculator.even(input);
+
+        assertEquals(testResult, expectedResult);
     }
 }
