@@ -143,4 +143,17 @@ public class CalculatorTest {
         List<Integer> actual2 = Arrays.asList(2,4);
         assertEquals(actual2 , calculator.CalcEven( actual ));
     }
+    @Test
+    public void Squaretest()
+    {
+        List<Integer> actual = Arrays.asList(1,2,3,4,7,3);
+        assertEquals(18 , calculator.CalcSquare( actual ));
+    }
+
+    @Test
+    public void PowerEvenTest()
+    {
+        List<Integer> actual = Arrays.asList(1,2,3,4,7,3);
+        assertEquals(18 , calculator.CalcPowerEven( actual ));
+    }
 }
