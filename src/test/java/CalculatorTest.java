@@ -19,4 +19,31 @@ public class CalculatorTest {
     public void testMultiply() {
         assertEquals(6, calculator.multiply(2, 3), "2 * 3 sollte 6 ergeben");
     }
+
+    @Test
+    public void testDivide() {
+        assertEquals(6, calculator.divide(18, 3), "18 / 3 sollte 6 ergeben");
+    }
+
+    @Test
+    public void testDivideByZero() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.divide(1, 0)); assertEquals("Cannot divide by zero.", exception.getMessage()); }
+
+    @Test
+    public void testFibNotNull() {
+        assertNotNull(calculator.generateFibonacci(5), "Für n > 0 sollte der array nicht Null sein.");
+    }
+    @Test
+    public void testFibEmpty() {
+        assertEquals(0, calculator.generateFibonacci(0).length, "Der Array sollte leer sein.");
+    }
+    @Test
+    public void testFibFirstTwo() {
+        assertEquals(0, calculator.generateFibonacci(3)[0], "Die erste Stelle sollte 0 sein.");
+        assertEquals(1, calculator.generateFibonacci(3)[1], "Die zweite Stelle sollte 1 sein.");
+    }
+    @Test
+    public void testFibFirstFive() {
+        assertArrayEquals(new int[] { 0, 1, 1, 2, 3}, calculator.generateFibonacci(5), "Das Ergebnis sollten die ersten fünf Stellen der Fibonacci-Reihe sein.");
+    }
 }
