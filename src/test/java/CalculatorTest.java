@@ -3,6 +3,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -95,6 +98,68 @@ public class CalculatorTest {
     public void isPrimeTest(){
         assertFalse(calculator.isPrime(54));
         assertTrue(calculator.isPrime(7));
+    }
+
+    @Test
+    public void summeTest(){
+        List list = new ArrayList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+
+        assertEquals(6, calculator.summe(list));
+    }
+
+    @Test
+    public void durchschnittTest() {
+        List<Integer> zahlen = List.of(10, 20, 30, 40, 50);
+        double erwarteterDurchschnitt = 30.0;
+        double result = calculator.durchschnitt(zahlen);
+        assertEquals(erwarteterDurchschnitt, result, 0.001, "Der Durchschnitt sollte 30.0 sein.");
+    }
+
+    @Test
+    public void testFindMaxMitWerten() {
+        List<Integer> zahlen = List.of(3, 10, 5, 8, 15);
+        int erwartetesMax = 15;
+        int result = Calculator.findMax(zahlen);
+        assertEquals(erwartetesMax, result, "Der Maximalwert sollte 15 sein.");
+    }
+
+    @Test
+    public void testFindMin() {
+        List<Integer> zahlen = List.of(3, 10, 5, 8, 15);
+        int erwartetesMin = 3;
+        int result = Calculator.findMin(zahlen);
+        assertEquals(erwartetesMin, result, "Der Minimalwert sollte 3 sein.");
+    }
+
+    @Test
+    public void testFilterGeradeZahlen() {
+        List<Integer> zahlen = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> erwarteteGeradeZahlen = List.of(2, 4, 6);
+        List<Integer> result = Calculator.filterGeradeZahlen(zahlen);
+        assertEquals(erwarteteGeradeZahlen, result, "Die gefilterten Zahlen sollten [2, 4, 6] sein.");
+    }
+
+    @Test
+    public void testBerechneQuadratwurzelGeraderZahlen() {
+        List<Integer> zahlen = List.of(1, 2, 3, 4, 5, 6);
+        List<Double> erwarteteQuadratwurzeln = List.of(Math.sqrt(2), Math.sqrt(4), Math.sqrt(6));
+        List<Double> result = Calculator.berechneQuadratwurzelGeraderZahlen(zahlen);
+        assertEquals(erwarteteQuadratwurzeln, result, "Die Quadratwurzeln sollten [sqrt(2), sqrt(4), sqrt(6)] sein.");
+    }
+
+    @Test
+    public void testGeradeZahlenUndQuadrate() {
+        List<Integer> zahlen = List.of(1, 2, 3, 4, 5, 6);
+        Map<Integer, Integer> erwartetesErgebnis = Map.of(
+                2, 4,
+                4, 16,
+                6, 36
+        );
+        Map<Integer, Integer> result = Calculator.geradeZahlenUndQuadrate(zahlen);
+        assertEquals(erwartetesErgebnis, result, "Die Map sollte die geraden Zahlen und ihre Quadrate enthalten.");
     }
     }
 
