@@ -1,9 +1,25 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
-
     private final Calculator calculator = new Calculator();
+
+    @BeforeEach
+    public void InitTest() {
+        System.out.println("Starting test..");
+    }
+
+    @AfterEach
+    public void CleanUpTest() {
+        System.out.println("Finished test!");
+    }
 
     @Test
     public void testAdd() {
@@ -18,5 +34,163 @@ public class CalculatorTest {
     @Test
     public void testMultiply() {
         assertEquals(6, calculator.multiply(2, 3), "2 * 3 sollte 6 ergeben");
+    }
+
+    @Test
+    public void testDivide_ShouldReturnExpectedResult()
+    {
+        int expectedResult = 5;
+        assertEquals(expectedResult, calculator.divide(10, 2), "10 / 2 should return 5");
+    }
+
+    @Test
+    public void testDivideWithZero_ShouldThrow()
+    {
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+        assertThrowsExactly(expectedException, () -> calculator.divide(10, 0), "Number can not be divided by 0");
+    }
+
+    @Test
+    public void testGenerateFibonacci_ShouldReturnExpectedResult() {
+        int[] testResult = calculator.generateFibonacci(5);
+        int[] expectedResult = { 0, 1, 1, 2, 3 };
+        assertNotNull(testResult);
+        assertArrayEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void testGenerateFibonacci_WithZero_ShouldReturnEmptyResult() {
+        int[] testResult = calculator.generateFibonacci(0);
+        int[] expectedResult = {};
+        assertArrayEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void testGenerateFibonacci_WithHighNumber_ShouldReturnExpectedResultWithinTime() {
+        int[] expectedResult = { 0, 1, 1, 2, 3};
+        Duration expectedDuration = Duration.ofSeconds(1);
+
+        assertTimeout(expectedDuration, () -> {
+            int[] testResult = calculator.generateFibonacci(100);
+            int[] slicedTestResult = Arrays.copyOfRange(testResult, 0, 5);
+
+            assertArrayEquals(slicedTestResult, expectedResult);
+        });
+    }
+
+    @Test
+    public void testPower_ShouldReturnExpectedResults() {
+        assertEquals(8, calculator.power(2, 3));
+        assertEquals(1, calculator.power(5, 0));
+        assertEquals(0.125, calculator.power(2, -3));
+    }
+
+    @Test
+    public void testFactorial_ShouldReturnExpectedResults() {
+        assertEquals(120, calculator.factorial(5));
+        assertEquals(3_628_800, calculator.factorial(10));
+    }
+
+    @Test
+    public void testGcd_ShouldReturnExpectedResults() {
+        assertEquals(6, calculator.gcd(54, 24));
+        assertEquals(1, calculator.gcd(17, 13));
+    }
+
+    @Test
+    public void isPrime_ShouldReturnExpectedResults() {
+        assertTrue(calculator.isPrime(2));
+        assertTrue(calculator.isPrime(11));
+        assertFalse(calculator.isPrime(4));
+        assertFalse(calculator.isPrime(9));
+    }
+
+    @Test
+    public void sqrt_ShouldReturnExpectedResults() {
+        assertEquals(3.0, calculator.sqrt(9));
+        assertEquals(1.4, calculator.sqrt(2));
+    }
+
+    @Test
+    public void sqrt_WithNegativeInput_ShouldThrow() {
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+        assertThrows(expectedException, () -> calculator.sqrt(-1));
+    }
+
+    @Test
+    public void sum_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
+        int expectedResult = 15;
+        int testResult = calculator.sum(input);
+
+        assertEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void sum_WithEmptyList_ShouldThrow() {
+        List<Integer> input = new LinkedList<>();
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        assertThrows(expectedException, () -> calculator.sum(input));
+    }
+
+    @Test
+    public void avg_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
+        double expectedResult = 3d;
+        double testResult = calculator.avg(input);
+
+        assertEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void avg_WithEmptyList_ShouldThrow() {
+        List<Integer> input = new LinkedList<>();
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        assertThrows(expectedException, () -> calculator.avg(input));
+    }
+
+    @Test
+    public void max_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
+        int expectedResult = 5;
+        int testResult = calculator.max(input);
+
+        assertEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void max_WithEmptyList_ShouldThrow() {
+        List<Integer> input = new LinkedList<>();
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        assertThrows(expectedException, () -> calculator.max(input));
+    }
+
+    @Test
+    public void min_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5);
+        int expectedResult = 1;
+        int testResult = calculator.min(input);
+
+        assertEquals(testResult, expectedResult);
+    }
+
+    @Test
+    public void min_WithEmptyList_ShouldThrow() {
+        List<Integer> input = new LinkedList<>();
+        Class<IllegalArgumentException> expectedException = IllegalArgumentException.class;
+
+        assertThrows(expectedException, () -> calculator.min(input));
+    }
+
+    @Test
+    public void even_ShouldReturnExpectedResult() {
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> expectedResult = Arrays.asList(2, 4, 6, 8, 10);
+        List<Integer> testResult = calculator.even(input);
+
+        assertEquals(testResult, expectedResult);
     }
 }
