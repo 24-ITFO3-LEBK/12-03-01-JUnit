@@ -1,3 +1,10 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -98,5 +105,49 @@ public class Calculator {
             return -1;
         }
         return Math.sqrt(n);
+    }
+    
+    public int summe(int[] zahlen) {
+    	return Arrays.stream(zahlen).sum();
+    }
+    
+    public double durchschnitt(int[] zahlen) {
+    	OptionalDouble schnitt = Arrays.stream(zahlen).average();
+    	return schnitt.isPresent() ? schnitt.getAsDouble() : 0.0;
+    }
+    
+    public int maximalwert(int[] zahlen) {
+    	OptionalInt max = Arrays.stream(zahlen).max();
+    	return max.isPresent() ? max.getAsInt() : Integer.MIN_VALUE;
+    }
+    
+    public int minimalwert(int[] zahlen) {
+    	OptionalInt min = Arrays.stream(zahlen).min();
+    	return min.isPresent() ? min.getAsInt() : Integer.MAX_VALUE;
+    }
+    
+    public List<Integer> filternGeradeZahlen(int[] zahlen) {
+    	return Arrays.stream(zahlen)
+    			.filter(zahl -> zahl % 2 == 0)
+    			.boxed()
+    			.collect(Collectors.toList());
+    }
+    
+    public List<Double> quadratischeWurzeln(int[] zahlen) {
+    	return Arrays.stream(zahlen)
+    			.filter(zahl -> zahl % 2 == 0)
+    			.mapToDouble(Math::sqrt)
+    			.boxed()
+    			.collect(Collectors.toList());
+    }
+    
+    public Map<Integer, Integer> mapGeradeZahlenUndQuadrate(int[] zahlen) {
+    	return Arrays.stream(zahlen)
+    			.filter(zahl -> zahl % 2 == 0)
+    			.boxed()
+    			.collect(Collectors.toMap(
+    					zahl -> zahl,
+    					zahl -> zahl * zahl
+    			));
     }
 }
