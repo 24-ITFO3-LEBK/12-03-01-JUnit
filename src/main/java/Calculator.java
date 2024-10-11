@@ -4,6 +4,11 @@ import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 public class Calculator {
     public int add(int a, int b) {
@@ -70,5 +75,31 @@ public class Calculator {
             if (n % i == 0)
                 return false;
         return true;
+    }
+
+    public int sum(int[] numbers) {
+        return Arrays.stream(numbers).sum();
+    }
+
+    public double average(int[] numbers) {
+        OptionalDouble avg = Arrays.stream(numbers).average();
+        return avg.orElse(0.0); // Gibt 0.0 zurück, wenn das Array leer ist
+    }
+
+    public int max(int[] numbers) {
+        OptionalInt max = Arrays.stream(numbers).max();
+        return max.orElseThrow(() -> new IllegalArgumentException("Das Array ist leer.")); // Auslösen einer Ausnahme für leeres Array
+    }
+
+    public int min(int[] numbers) {
+        OptionalInt min = Arrays.stream(numbers).min();
+        return min.orElseThrow(() -> new IllegalArgumentException("Das Array ist leer.")); // Auslösen einer Ausnahme für leeres Array
+    }
+
+    public List<Integer> filterEven(int[] numbers) {
+        return Arrays.stream(numbers)
+                .filter(n -> n % 2 == 0)
+                .boxed() // Konvertiert IntStream zu Stream<Integer>
+                .collect(Collectors.toList());
     }
 }
