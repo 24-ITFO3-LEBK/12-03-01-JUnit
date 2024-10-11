@@ -174,6 +174,14 @@ public class CalculatorTest {
         assertEquals(expectedList, calculator.filterEven(list), "Die gefilterte Liste besteht aus 0, 4 und 32");
     }
 
+    @Test
+    public void testMapToSqrt() {
+        List<Integer> list = Arrays.asList(1, 4, 16, 9, 36, 225);
+        List<Double> expectedList = Arrays.asList(1.0, 2.0, 4.0, 3.0, 6.0, 15.0);
+
+        assertEquals(expectedList, calculator.mapToSqrt(list), "Die gemappte Liste besteht aus den Quadratwurzeln");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());

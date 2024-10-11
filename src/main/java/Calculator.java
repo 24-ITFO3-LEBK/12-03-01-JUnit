@@ -145,4 +145,13 @@ public class Calculator {
 
         return stream.filter(a -> a % 2 == 0).toList();
     }
+
+    /**
+     * @return the mapped list with the positiv square roots of the values in the given list
+     */
+    public List<Double> mapToSqrt(List<Integer> list) {
+        Stream<Integer> stream = list.stream();
+
+        return stream.map(this::sqrt).toList();
+    }
 }
