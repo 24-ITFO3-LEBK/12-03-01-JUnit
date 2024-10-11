@@ -166,6 +166,14 @@ public class CalculatorTest {
         assertEquals(3, calculator.min(list), "Das Minimum der Liste ist 3");
     }
 
+    @Test
+    public void testFilterEven() {
+        List<Integer> list = Arrays.asList(0, 1, 4, 32, 3, 45, 15);
+        List<Integer> expectedList = Arrays.asList(0, 4, 32);
+
+        assertEquals(expectedList, calculator.filterEven(list), "Die gefilterte Liste besteht aus 0, 4 und 32");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());

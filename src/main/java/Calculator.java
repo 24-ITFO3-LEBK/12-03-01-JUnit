@@ -136,4 +136,13 @@ public class Calculator {
 
         return stream.min(Comparator.comparingInt(a -> a)).orElseThrow();
     }
+
+    /**
+     * @return the filtered list of even values in the given list
+     */
+    public List<Integer> filterEven(List<Integer> list) {
+        Stream<Integer> stream = list.stream();
+
+        return stream.filter(a -> a % 2 == 0).toList();
+    }
 }
