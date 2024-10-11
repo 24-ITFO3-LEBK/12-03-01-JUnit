@@ -89,4 +89,5 @@ public class CalculatorTest {
     public void onTestFinished(){
         System.out.print("Test abgeschlossen \n");
     }
+
 }
