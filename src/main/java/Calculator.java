@@ -1,3 +1,8 @@
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -53,22 +58,54 @@ public class Calculator {
         if (b == 0) return a;
         return gcd(b, a % b);
     }
-    public boolean isPrime(int a){
+
+    public boolean isPrime(int a) {
         if (a <= 1) {
             return false;
         }
-        for (int i = 2; i < a/2; i++) {
-            if(a%i== 0){
+        for (int i = 2; i < a / 2; i++) {
+            if (a % i == 0) {
                 return false;
             }
         }
         return true;
     }
 
-    public double sqrt(int i) {
-        if(i<0){
+    public static double sqrt(int i) {
+        if (i < 0) {
             throw new IllegalArgumentException("Negative Numbers are not possible!");
         }
         return Math.sqrt(i);
+    }
+
+    public int sumOfAll(List<Integer> numbers) {
+        return numbers.stream().reduce(0, Integer::sum);
+    }
+
+    public double averageOfAll(List<Integer> numbers) {
+        double sum = numbers.stream().reduce(0, Integer::sum);
+        return sum / numbers.size();
+    }
+
+    public int getMaxValue(List<Integer> numbers) {
+        return numbers.stream().reduce(Integer::max).get();
+    }
+
+    public int getMinValue(List<Integer> numbers) {
+        return numbers.stream().reduce(Integer::min).get();
+    }
+
+    public List<Integer> getEvenList(List<Integer> numbers) {
+        return numbers.stream().filter((n -> n % 2 == 0)).collect(Collectors.toList());
+    }
+
+    public List<Double> getEvenListRoot(List<Integer> numbers) {
+        Stream<Integer> list = numbers.stream().filter((n -> n % 2 == 0));
+        return list.map(Calculator::sqrt).collect(Collectors.toList());
+    }
+
+    public Map<Integer, Integer> getEvenSquareMap(List<Integer> numbers) {
+        Stream<Integer> listEven = numbers.stream().filter((n -> n % 2 == 0));
+        return listEven.collect(Collectors.toMap(v -> v, v -> power(v, 2)));
     }
 }
