@@ -1,4 +1,9 @@
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
@@ -88,5 +93,35 @@ public class CalculatorTest {
     @Test
     public void testSqrtNegative() {
        // assertEquals(3, calculator.sqrt(-9));
+    }
+
+    @Test
+    public void testSum() {
+        assertEquals(10, calculator.sum(new Integer[]{2, 3, 5}));
+    }
+
+    @Test
+    public void testAvg() {
+        assertEquals(5, calculator.avg(new Integer[]{2, 8, 5}));
+    }
+
+    @Test
+    public void testMax() {
+        assertEquals(8, calculator.max(new Integer[]{2, 8, 5}));
+    }
+
+    @Test
+    public void testMin() {
+        assertEquals(2, calculator.min(new Integer[]{2, 8, 5}));
+    }
+
+    @Test
+    public void testFilterEvenNumbers() {
+        assertEquals(Arrays.asList(2, 8), calculator.filterEvenNumbers(new Integer[]{2, 8, 5}));
+    }
+
+    @Test
+    public void testFilterEvenNumbersSquared() {
+        assertEquals(Arrays.asList(4, 64), calculator.filterEvenNumbersSquared(new Integer[]{2, 8, 5}));
     }
 }

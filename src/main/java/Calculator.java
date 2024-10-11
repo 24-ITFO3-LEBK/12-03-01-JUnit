@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Calculator {
@@ -79,10 +81,81 @@ public class Calculator {
         return Math.sqrt(n);
     }
 
+    /**
+     * Gibt die Summe aller Integer im Array zurück
+     *
+     * @param numberArr / Int Array
+     * @return int
+     */
     public int sum(Integer[] numberArr) {
-        int sum = 0;
-        List<Integer> zahlen = Arrays.asList(numberArr);
-        Stream<> stream = zahlen.stream();
-        sum = stream.forEach(e -> sum + e);
+        int sum;
+        List<Integer> numberList = Arrays.asList(numberArr);
+        Stream<Integer> stream = numberList.stream();
+        sum = stream.reduce(0, Integer::sum);
+        return sum;
+    }
+
+    /**
+     * Gibt den Durchschnitt aller Integer im Array zurück
+     *
+     * @param numberArr / Int Array
+     * @return double
+     */
+    public double avg(Integer[] numberArr) {
+        List<Integer> numberList = Arrays.asList(numberArr);
+        Stream<Integer> stream = numberList.stream();
+        IntSummaryStatistics stats = stream.mapToInt((x) -> x).summaryStatistics();
+        return stats.getAverage();
+    }
+
+    /**
+     * Gibt das Maximum aller Integer im Array
+     *
+     * @param numberArr / Int Array
+     * @return int
+     */
+    public int max(Integer[] numberArr) {
+        List<Integer> numberList = Arrays.asList(numberArr);
+        Stream<Integer> stream = numberList.stream();
+        IntSummaryStatistics stats = stream.mapToInt((x) -> x).summaryStatistics();
+        return stats.getMax();
+    }
+
+    /**
+     * Gibt das Minimum aller Integer im Array zurück
+     *
+     * @param numberArr / Int Array
+     * @return int
+     */
+    public int min(Integer[] numberArr) {
+        List<Integer> numberList = Arrays.asList(numberArr);
+        Stream<Integer> stream = numberList.stream();
+        IntSummaryStatistics stats = stream.mapToInt((x) -> x).summaryStatistics();
+        return stats.getMin();
+    }
+
+    /**
+     * Entfernt alle ungeraden Zahlen aus einem Array
+     *
+     * @param numberArr / Int Array
+     * @return List<Integer>
+     */
+    public List<Integer> filterEvenNumbers(Integer[] numberArr) {
+        List<Integer> numberList = Arrays.asList(numberArr);
+        Stream<Integer> stream = numberList.stream();
+        return stream.filter(n -> n % 2 == 0).collect(Collectors.toList());
+    }
+
+    /**
+     * Entfernt alle ungeraden Zahlen aus einem Array
+     * wobei die Zahl der Schlüssel und das Quadrat der Wert wird
+     *
+     * @param numberArr / Int Array
+     * @return List<Integer>
+     */
+    public List<Integer> filterEvenNumbersSquared(Integer[] numberArr) {
+        List<Integer> numberList = Arrays.asList(numberArr);
+        Stream<Integer> stream = numberList.stream();
+        return stream.filter(n -> n % 2 == 0).map(n -> n * n).collect(Collectors.toList());
     }
 }
