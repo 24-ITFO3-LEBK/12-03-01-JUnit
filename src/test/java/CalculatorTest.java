@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -141,5 +142,31 @@ public class CalculatorTest {
             calculator.sqrt(-5);
         });
         assertEquals(exception.getMessage(), "Negative Zahlen sind ungültig.");
+    }
+
+    @Test
+    public void testSum() {
+        assertEquals(60, calculator.sum(new int[]{10, 20, 30}));
+    }
+
+    @Test
+    public void testAvg() {
+        assertEquals(20, calculator.avg(new int[]{10, 20, 30}));
+    }
+
+    @Test
+    public void testMax() {
+        assertEquals(1000, calculator.max(new int[]{10, 200, 100, 5, 1000, 30}));
+    }
+
+    @Test
+    public void testMin() {
+        assertEquals(5, calculator.min(new int[]{10, 200, 100, 5, 1000, 30}));
+    }
+
+    @Test
+    public void testOddNumbers() {
+        List<Integer> list = List.of(100);
+        assertEquals(list, calculator.evenNumbers(new Integer[]{19, 100, 5, 7}));
     }
 }
