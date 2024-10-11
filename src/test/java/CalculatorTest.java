@@ -8,9 +8,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static java.time.Duration.ofMillis;
+import static java.util.Map.entry;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
@@ -180,6 +182,22 @@ public class CalculatorTest {
         List<Double> expectedList = Arrays.asList(1.0, 2.0, 4.0, 3.0, 6.0, 15.0);
 
         assertEquals(expectedList, calculator.mapToSqrt(list), "Die gemappte Liste besteht aus den Quadratwurzeln");
+    }
+
+    @Test
+    public void testMapToSquares() {
+        List<Integer> list = Arrays.asList(0, 1, 4, 32, 3, 45, 15);
+        Map<Integer, Double> expectedList =  Map.ofEntries(
+                entry(0, 0.0),
+                entry(1, 1.0),
+                entry(4, 16.0),
+                entry(32, 1024.0),
+                entry(3, 9.0),
+                entry(45, 2025.0),
+                entry(15, 225.0)
+        );
+
+        assertEquals(expectedList, calculator.mapToSquares(list), "Die Map besteht aus den Zahlen und deren Quadrate");
     }
 
     @AfterEach

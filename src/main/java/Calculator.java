@@ -1,8 +1,4 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.stream.Collectors;
+import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -153,5 +149,18 @@ public class Calculator {
         Stream<Integer> stream = list.stream();
 
         return stream.map(this::sqrt).toList();
+    }
+
+    /**
+     * @return the map with the number as key and the squared number as value
+     */
+    public Map<Integer, Double> mapToSquares(List<Integer> list) {
+        Stream<Integer> stream = list.stream();
+
+        HashMap<Integer, Double> map = new HashMap<>();
+
+        stream.forEach(n -> map.put(n, power(n, 2)));
+
+        return map;
     }
 }
