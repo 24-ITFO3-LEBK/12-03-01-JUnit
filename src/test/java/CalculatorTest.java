@@ -159,6 +159,13 @@ public class CalculatorTest {
         assertEquals(45, calculator.max(list), "Das Maximum der Liste ist 45");
     }
 
+    @Test
+    public void testMin() {
+        List<Integer> list = Arrays.asList(4, 32, 3, 45, 15);
+
+        assertEquals(3, calculator.min(list), "Das Minimum der Liste ist 3");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());

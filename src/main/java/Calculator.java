@@ -127,4 +127,13 @@ public class Calculator {
 
         return stream.max(Comparator.comparingInt(a -> a)).orElseThrow();
     }
+
+    /**
+     * @return the minimum value of the elements in this list
+     */
+    public double min(List<Integer> list) {
+        Stream<Integer> stream = list.stream();
+
+        return stream.min(Comparator.comparingInt(a -> a)).orElseThrow();
+    }
 }
