@@ -92,4 +92,21 @@ public class CalculatorTest {
     public void testSquareRootNeg() {
         assertEquals(-1, calculator.sqrt(-10), 0.0001, "10 sollte -1 wiedergeben");
     }
+
+
+
+    @Test
+    public void Summe() { assertEquals(21, calculator.sum(new int[] {1, 2, 3, 4, 5, 6}), 0.0001, "10 sollte -1 wiedergeben");
+    }
+    @Test
+    public void Durchschnitt() { assertEquals(3.5, calculator.average(new int[] {1, 2, 3, 4, 5, 6}), 0.0001, "10 sollte -1 wiedergeben");
+    }
+    @Test
+    public void Maximalwert() { assertEquals(6, calculator.max(new int[] {1, 2, 3, 4, 5, 6}), 0.0001, "10 sollte -1 wiedergeben");
+    }
+    @Test
+    public void Minimalwert() { assertEquals(1, calculator.min(new int[] {1, 2, 3, 4, 5, 6}), 0.0001, "10 sollte -1 wiedergeben");
+    }
+
+
 }

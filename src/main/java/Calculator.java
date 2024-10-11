@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.OptionalInt;
 import java.util.stream.Stream;
 
 public class Calculator {
@@ -101,14 +103,67 @@ public class Calculator {
         if (n < 0) {
             return -1;
         }
+        filter();
         return Math.sqrt(n);
     }
 
     public static void filter(){
-        List<Integer> zahlen = Arrays.asList(1,2,3,4,5);
-        Stream<Integer> stream = zahlen.stream();
+
+        List<Integer> zahlen = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> geradeZahlen = zahlen.stream()
+                .filter(n -> n % 2 == 0)
+                .map(n -> n * n)
+                .collect(Collectors.toList());
+
+        System.out.println(geradeZahlen); // Ausgabe [4,16,36]
     }
 
+
+
+
+
+
+
+
+
+    public int sum(int[] numbers) {
+        return Arrays.stream(numbers).sum();
+    }
+
+
+    public double average(int[] numbers) {
+        return Arrays.stream(numbers).average().orElse(0.0);
+    }
+
+
+    public int max(int[] numbers) {
+        return Arrays.stream(numbers).max().getAsInt();
+    }
+
+
+    public int min(int[] numbers) {
+        return Arrays.stream(numbers).min().getAsInt();
+    }
+
+
+    public List<Integer> filterEvens(int[] numbers) {
+        return Arrays.stream(numbers)
+                .filter(n -> n % 2 == 0)
+                .boxed() // konvertiert int zu Integer
+                .collect(Collectors.toList());
+    }
+
+    // Beispiel für die Methoden
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        int[] numbers = {1, 2, 3, 4, 5, 6};
+
+        System.out.println("Summe: " + calculator.sum(numbers));
+        System.out.println("Durchschnitt: " + calculator.average(numbers));
+        System.out.println("Maximalwert: " + calculator.max(numbers));
+        System.out.println("Minimalkwert: " + calculator.min(numbers));
+        System.out.println("Gerade Zahlen: " + calculator.filterEvens(numbers));
+    }
 }
 
 /*
