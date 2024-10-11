@@ -5,6 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -168,5 +170,52 @@ public class CalculatorTest {
     @Test
     public void testIsPrime4() {
         assertTrue( calculator.isPrime(2), "wahr");
+    }
+
+    @Test
+    public void testStreamSumBasic() {
+        List<Integer> numbers = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,22,33,44,55,66,77,88,99,100);
+        int erg = 0;
+        for (Integer number : numbers) {
+            erg = erg + number;
+        }
+        assertEquals(erg , calculator.streamSum(numbers) , "aaa");
+    }
+
+    @Test
+    public void testStreamMin() {
+        List<Integer> numbers = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,22,33,44,55,66,77,88,99,100);
+        assertEquals(0 , calculator.streamMin(numbers) , "0");
+    }
+
+    @Test
+    public void testStreamMax() {
+        List<Integer> numbers = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,22,33,44,55,66,77,88,99,100);
+        assertEquals(100 , calculator.streamMax(numbers) , "100");
+    }
+
+    @Test
+    public void testStreamAverageBasicNoTolreanz() {
+        List<Integer> numbers = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,22,33,44,55,66,77,88,99,100);
+        int erg = 0;
+        for (Integer number : numbers) {
+            erg = erg + number;
+        }
+        assertEquals(((double) erg / numbers.size()) , calculator.streamAverage(numbers) , "30.9523...");
+    }
+
+    @Test
+    public void testStreamFilter() {
+        List<Integer> numbers = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,22,33,44,55,66,77,88,99,100);
+        List<Integer> expected = Arrays.asList(0,2,4,6,8,10,22,44,66,88,100);
+        assertEquals(expected , calculator.streamFilterOddNumber(numbers), "a");
+    }
+
+    //ReFravtoring needed
+    @Test
+    public void testStreamSqrtNoToleranz() {
+        List<Integer> numbers = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,22,33,44,55,66,77,88,99,100);
+        List<Double> expected = Arrays.asList(Math.sqrt(0),Math.sqrt(2),Math.sqrt(4),Math.sqrt(6),Math.sqrt(8),Math.sqrt(10),Math.sqrt(22),Math.sqrt(44),Math.sqrt(66),Math.sqrt(88),Math.sqrt(100));
+        assertEquals(expected , calculator.streamSquareRoot(numbers), "a");
     }
 }

@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.OptionalDouble;
+
 public class Calculator {
     final static String CANNOT_DIVIDE_BY_ZERO = "Cannot divide by zero.";
 
@@ -51,7 +54,7 @@ public class Calculator {
     public int factorial(int i) {
         int erg = 1;
         for (int j = 0; j < i; j++) {
-            erg = erg * (j+1);
+            erg = erg * (j + 1);
         }
         return erg;
     }
@@ -80,5 +83,34 @@ public class Calculator {
             }
         }
         return true;
+    }
+
+    public int streamSum(List<Integer> integerList) {
+        return integerList.stream().mapToInt(Integer::valueOf).sum();
+    }
+
+    public Double streamAverage(List<Integer> integerList) {
+        OptionalDouble doubleErg = integerList.stream().mapToInt(Integer::valueOf).average();
+        if (doubleErg.isPresent()) {
+            return doubleErg.getAsDouble();
+        } else {
+            return null;
+        }
+    }
+
+    public int streamMin(List<Integer> integerList) {
+        return integerList.stream().min(Integer::compare).get();
+    }
+
+    public int streamMax(List<Integer> integerList) {
+        return integerList.stream().max(Integer::compare).get();
+    }
+
+    public List<Integer> streamFilterOddNumber(List<Integer> integerList) {
+        return integerList.stream().filter(n -> n % 2 == 0).toList();
+    }
+
+    public List<Double> streamSquareRoot(List<Integer> integerList){
+        return integerList.stream().filter(n ->n % 2 == 0).map(n -> Math.sqrt(n)).toList();
     }
 }
