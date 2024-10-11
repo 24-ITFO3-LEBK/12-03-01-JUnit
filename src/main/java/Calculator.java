@@ -127,15 +127,4 @@ public class Calculator {
                 .boxed()
                 .collect(Collectors.toList());
     }
-
-
-    public Map<Integer, Integer> mapGeradeZahlenUndQuadrate(int[] zahlen) {
-        return Arrays.stream(zahlen)
-                .filter(zahl -> zahl % 2 == 0)
-                .boxed()
-                .collect(Collectors.toMap(
-                        zahl -> zahl,
-                        zahl -> zahl * zahl
-                ));
-    }
 }
