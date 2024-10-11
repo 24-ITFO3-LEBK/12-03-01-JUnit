@@ -1,3 +1,10 @@
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -81,7 +88,36 @@ public class Calculator {
         }
     }
 
+    public Integer CalcSumme(List<Integer> zahlen)
+    {
+        int j = 0;
+        j = zahlen.stream().mapToInt(i -> i).sum();
+        return j;
+    }
+    public OptionalDouble CalcDurch(List<Integer> zahlen)
+    {
+        OptionalDouble j;
+        j = zahlen.stream().mapToInt(i -> i).average();
+        return j;
+    }
 
-    
-    
+    public Optional<Integer> CalcMin(List<Integer> zahlen)
+    {
+        Optional<Integer> j;
+        j = zahlen.stream().min(Comparator.comparing(i -> i));
+        return j;
+    }
+
+
+    public Optional<Integer> CalcMax(List<Integer> zahlen)
+    {
+        Optional<Integer> j;
+        j = zahlen.stream().max(Comparator.comparing(i -> i));
+        return j;
+    }
+
+    public List<Integer> CalcEven(List<Integer> zahlen)
+    {
+        return (List<Integer>) zahlen.stream().filter(i -> i % 2 == 0).collect(Collectors.toList());
+    }
 }

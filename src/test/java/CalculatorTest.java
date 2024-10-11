@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -105,5 +107,40 @@ public class CalculatorTest {
     @Test
     public void squaretestpi() throws Exception {
         assertEquals(1.41, calculator.sqrt(2), 0.2);
+    }
+
+    @Test
+    public void summetest()
+    {
+        List<Integer> actual = Arrays.asList(1,2,3,4,7,3);
+        assertEquals(20, calculator.CalcSumme( actual ));
+    }
+
+    @Test
+    public void avrgtest()
+    {
+        List<Integer> actual = Arrays.asList(1,3,3,1,3,1);
+        assertEquals(2.0, calculator.CalcDurch( actual ));
+    }
+
+    @Test
+    public void MinTest()
+    {
+        List<Integer> actual = Arrays.asList(1,2,3,4,7,3);
+        assertEquals(1 , calculator.CalcMin( actual ));
+    }
+
+    @Test
+    public void MaxTest()
+    {
+        List<Integer> actual = Arrays.asList(1,2,3,4,7,3);
+        assertEquals(7 , calculator.CalcMax( actual ));
+    }
+    @Test
+    public void EvenTest()
+    {
+        List<Integer> actual = Arrays.asList(1,2,3,4,7,3);
+        List<Integer> actual2 = Arrays.asList(2,4);
+        assertEquals(actual2 , calculator.CalcEven( actual ));
     }
 }
