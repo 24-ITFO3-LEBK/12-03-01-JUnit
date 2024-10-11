@@ -10,6 +10,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
+    //TestCase Calculator
 
     private  Calculator calculator;
 
@@ -61,6 +62,9 @@ public class CalculatorTest {
         assertTimeout(Duration.ofSeconds(1),() ->calculator.generateFibonacci(100));
     }
 
+    //TestCase Streams
+    List<Integer>b = Arrays.asList(1,2,3,4);
+
     @Test
     public void testExpo() {assertEquals(8, calculator.power(2, 3));}
     @Test
@@ -81,7 +85,6 @@ public class CalculatorTest {
     public void testsqrt(){assertEquals(3.0, calculator.sqrt(9), 0.0001);}
     @Test
     public void testsqrtNegative(){assertThrows(IllegalArgumentException.class,()->calculator.sqrt(-1));}
-    List<Integer>b = Arrays.asList(1,2,3,4);
     @Test
     public void testSumOfAll(){assertEquals(10, calculator.sumOfAll(b));}
 
