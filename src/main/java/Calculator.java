@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -100,5 +101,20 @@ public class Calculator {
         Stream<Integer> stream = list.stream();
 
         return stream.reduce(0, Integer::sum);
+    }
+
+    /**
+     * @return the average of elements in this array
+     */
+    public double average(int[] list) {
+        IntStream stream = Arrays.stream(list);
+
+        OptionalDouble average = stream.average();
+
+        if (average.isEmpty()) {
+            throw new RuntimeException("Error while calculation average");
+        }
+
+        return average.getAsDouble();
     }
 }

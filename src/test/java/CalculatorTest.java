@@ -145,6 +145,13 @@ public class CalculatorTest {
         assertEquals(100, calculator.sum(list), "Die Summe der Liste ist 100");
     }
 
+    @Test
+    public void testAverage() {
+        int[] list = {20, 40, 80, 100};
+
+        assertEquals(60, calculator.average(list), "Der Durchschnitt der Liste ist 60");
+    }
+
     @AfterEach
     void afterEachTest(TestInfo testInfo) {
         System.out.println("Test abgeschlossen: " + testInfo.getDisplayName());
