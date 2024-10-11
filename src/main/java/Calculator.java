@@ -1,3 +1,12 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -81,5 +90,40 @@ public class Calculator {
             throw new IllegalArgumentException("Negative Zahlen sind ungültig.");
         }
         return Math.sqrt(i);
+    }
+
+    public int sum(int[] intArray) {
+        return Arrays.stream(intArray).sum();
+    }
+
+    public Double avg(int[] intArray) {
+        OptionalDouble avg = Arrays.stream(intArray).average();
+        return avg.isPresent() ? avg.getAsDouble() : null;
+    }
+
+    public Integer max(int[] intArray) {
+        OptionalInt opMaxInt = Arrays.stream(intArray).max();
+        return opMaxInt.isPresent() ? opMaxInt.getAsInt() : null;
+    }
+
+    public Integer min(int[] intArray) {
+        OptionalInt opMaxInt = Arrays.stream(intArray).min();
+        return opMaxInt.isPresent() ? opMaxInt.getAsInt() : null;
+    }
+
+    public List<Integer> evenNumbers(Integer[] intArray) {
+        return Arrays.stream(intArray).filter(i -> i % 2 == 0).collect(Collectors.toList());
+    }
+
+    public List<Double> squareRoot(Integer[] intArray) {
+        List<Integer> integerList = evenNumbers(intArray);
+        return integerList.stream().map(i -> sqrt(Double.valueOf(i))).collect(Collectors.toList());
+    }
+
+    public Map<Double, Double> powerEvenNumbers(Integer[] intArray) {
+        List<Integer> integerList = evenNumbers(intArray);
+        return integerList.stream().collect(Collectors.toMap(
+                Integer::doubleValue, v -> power(v,2)
+        ));
     }
 }

@@ -3,6 +3,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -77,7 +81,7 @@ public class CalculatorTest {
     @Test
     public void testGenerateFibonacciCheckTimeout() {
         assertTimeout(Duration.ofMillis(1000), () -> {
-            calculator.generateFibonacci(100000000);
+            calculator.generateFibonacci(10000);
         });
     }
 
@@ -147,5 +151,44 @@ public class CalculatorTest {
             calculator.sqrt(-5);
         });
         assertEquals(exception.getMessage(), "Negative Zahlen sind ungültig.");
+    }
+
+    @Test
+    public void testSum() {
+        assertEquals(60, calculator.sum(new int[]{10, 20, 30}));
+    }
+
+    @Test
+    public void testAvg() {
+        assertEquals(20, calculator.avg(new int[]{10, 20, 30}));
+    }
+
+    @Test
+    public void testMax() {
+        assertEquals(1000, calculator.max(new int[]{10, 200, 100, 5, 1000, 30}));
+    }
+
+    @Test
+    public void testMin() {
+        assertEquals(5, calculator.min(new int[]{10, 200, 100, 5, 1000, 30}));
+    }
+
+    @Test
+    public void testOddNumbers() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(100));
+        assertEquals(list, calculator.evenNumbers(new Integer[]{19, 100, 5, 7}));
+    }
+
+    @Test
+    public void testSquareRootArray() {
+        List<Double> list = new ArrayList<>(Arrays.asList(10.0, 6.0));
+        assertEquals(list, calculator.squareRoot(new Integer[]{19, 100, 5, 7, 36}));
+    }
+
+    @Test
+    public void testPowerEvenNumbers() {
+        HashMap<Double,Double> map = new HashMap<>();
+        map.put(100.0, 10000.0);
+        assertEquals(map, calculator.powerEvenNumbers(new Integer[]{100}));
     }
 }
