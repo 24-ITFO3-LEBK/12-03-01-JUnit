@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
-    private  Calculator calculator = new Calculator();
+    private  Calculator calculator;
 
     @BeforeEach
     public void resetTestInstance(){
