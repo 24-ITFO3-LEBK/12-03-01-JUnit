@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -73,5 +77,12 @@ public class Calculator {
 
         }
         return Math.sqrt(n);
+    }
+
+    public int sum(Integer[] numberArr) {
+        int sum = 0;
+        List<Integer> zahlen = Arrays.asList(numberArr);
+        Stream<> stream = zahlen.stream();
+        sum = stream.forEach(e -> sum + e);
     }
 }
