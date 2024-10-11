@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -99,4 +103,37 @@ public class Calculator {
         }
         return Math.sqrt(n);
     }
+
+    public static void filter(){
+        List<Integer> zahlen = Arrays.asList(1,2,3,4,5);
+        Stream<Integer> stream = zahlen.stream();
+    }
+
 }
+
+/*
+*Aufgabenstellung:
+
+Implementieren Sie folgende Methoden in der Calculator-Klasse unter Verwendung von Streams, die ein Array an Ganzzahlen entgegennimmt:
+Summe: Berechne die Summe aller Zahlen in der Liste.
+Durchschnitt: Berechne den Durchschnitt aller Zahlen in der Liste.
+Maximalwert: Finde den höchsten Wert in der Liste.
+Minimalkwert: Finde den niedrigsten Wert in der Liste.
+Filtern: Erstelle eine Liste von geraden Zahlen aus der ursprünglichen Liste.
+
+
+Zusatzaufgaben:
+a) Modifizieren Sie die Calculator-Klasse so, dass sie auch die Berechnung von quadratischen Wurzeln der geraden Zahlen ermöglicht. Nutzen Sie dafür Streams und map.
+b) Implementiere eine Methode, die die geraden Zahlen und deren Quadrate in einem Map speichert, wobei die Zahl der Schlüssel und das Quadrat der Wert ist.
+
+
+Dokumentation:
+Dokumentieren Sie Ihren Code in Form eines Kommentars in Ihrer Methode
+Schreiben Sie Tests, um die verschiedenen Methoden zu überprüfen
+
+
+Hinweise:
+Nutzen Sie die Java Stream API (java.util.stream), um die Aufgaben zu lösen.
+Denken Sie an die Verwendung von Collectors für die Aggregation von Ergebnissen.
+Bei Fragen zur Implementierung oder zu den Konzepten, scheue Sie nichtdavor, nach Hilfe zu fragen.
+* */
