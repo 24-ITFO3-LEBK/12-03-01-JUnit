@@ -87,35 +87,47 @@ public class Calculator {
         }
         return Math.sqrt(i);
     }
-
+    // Berechnet die Summe der Zahlen des uebergebenen Arrays
     public int sum(int[] intArray) {
         return Arrays.stream(intArray).sum();
     }
-
+    // Berechnet den Durchschnitt der Zahlen des uebergebenen Arrays
     public Double avg(int[] intArray) {
         OptionalDouble avg = Arrays.stream(intArray).average();
         return avg.isPresent() ? avg.getAsDouble() : null;
     }
 
+    // Gibt den groeßten Wert, den das Array haelt, zurueck
     public Integer max(int[] intArray) {
         OptionalInt opMaxInt = Arrays.stream(intArray).max();
         return opMaxInt.isPresent() ? opMaxInt.getAsInt() : null;
     }
 
+    // Gibt den kleinsten Wert, den das Array haelt, zurueck
     public Integer min(int[] intArray) {
         OptionalInt opMaxInt = Arrays.stream(intArray).min();
         return opMaxInt.isPresent() ? opMaxInt.getAsInt() : null;
     }
-
+    // Filtert nur gerade Zahlen und gibt diese zurueck
     public List<Integer> evenNumbers(Integer[] intArray) {
         return Arrays.stream(intArray).filter(i -> i % 2 == 0).toList();
     }
 
+    /** Filtert das Array nach geraden Zahlen und
+     * berechnet die Quadratwurzel jeder geraden Zahl und
+     * gibt diese als List zurueck
+      **/
     public List<Double> squareRoot(Integer[] intArray) {
         List<Integer> integerList = evenNumbers(intArray);
         return integerList.stream().map(i -> sqrt(Double.valueOf(i))).toList();
     }
 
+    /**
+     * Erstellt eine Map mit allen geraden Zahlen
+     * der uebergebenen Liste und berechnet
+     * zu den Zahlen das Qudrat.
+     * Key ist die Basis-Zahl und Value das Quadrat
+     **/
     public Map<Double, Double> powerEvenNumbers(Integer[] intArray) {
         List<Integer> integerList = evenNumbers(intArray);
         return integerList.stream().collect(Collectors.toMap(

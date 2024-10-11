@@ -73,7 +73,7 @@ public class CalculatorTest {
     @Test
     public void testGenerateFibonacciCheckTimeout() {
         assertTimeout(Duration.ofMillis(1000), () -> {
-            calculator.generateFibonacci(100000000);
+            calculator.generateFibonacci(100_000_000);
         });
     }
 
