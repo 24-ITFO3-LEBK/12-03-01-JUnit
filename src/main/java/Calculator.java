@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -119,4 +116,10 @@ public class Calculator {
         return integerList.stream().map(i -> sqrt(Double.valueOf(i))).toList();
     }
 
+    public Map<Double, Double> powerEvenNumbers(Integer[] intArray) {
+        List<Integer> integerList = evenNumbers(intArray);
+        return integerList.stream().collect(Collectors.toMap(
+                Integer::doubleValue, v -> power(v,2)
+        ));
+    }
 }

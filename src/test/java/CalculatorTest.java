@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -168,5 +169,18 @@ public class CalculatorTest {
     public void testOddNumbers() {
         List<Integer> list = List.of(100);
         assertEquals(list, calculator.evenNumbers(new Integer[]{19, 100, 5, 7}));
+    }
+
+    @Test
+    public void testSquareRootArray() {
+        List<Double> list = List.of(10.0, 6.0);
+        assertEquals(list, calculator.squareRoot(new Integer[]{19, 100, 5, 7, 36}));
+    }
+
+    @Test
+    public void testPowerEvenNumbers() {
+        HashMap<Double,Double> map = new HashMap<>();
+        map.put(100.0, 10000.0);
+        assertEquals(map, calculator.powerEvenNumbers(new Integer[]{100}));
     }
 }
