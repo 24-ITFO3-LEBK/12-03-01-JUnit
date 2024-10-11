@@ -1,19 +1,18 @@
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.Duration;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
-    @BeforeEach
-    public void initEach(){
-        Calculator calculator = new Calculator();
-    }
 
     private final Calculator calculator = new Calculator();
 
     @AfterEach
-    public void each(){
-        System.out.println("Abgeschlossen");
+    public void onTestEnd() {
+        System.out.println("Test abgeschlossen");
     }
 
     @Test
@@ -32,8 +31,8 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testDivision() {
-        assertEquals(6, calculator.divide(18, 3), "18 / 3 sollte 6 ergeben");
+    public void testDivide() {
+        assertEquals(5, calculator.divide(10, 2), "10 / 2 sollte 5 ergeben");
     }
 
     @Test
@@ -41,19 +40,133 @@ public class CalculatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             calculator.divide(10, 0);
         });
+
         assertEquals("Cannot divide by zero.", exception.getMessage());
     }
 
     @Test
-    public void testFibonacciEdgecases(){
-        assertNotEquals(null, calculator.generateFibonacci(4), "Fibonacci nicht null");
-        assertEquals(0, calculator.generateFibonacci(0).length);
-        assertArrayEquals(new int[]{0,1}, calculator.generateFibonacci(2));
+    public void testGenerateFibonacciNotNull() {
+        assertNotNull(calculator.generateFibonacci(5));
     }
 
     @Test
-    public void testFibonacci(){
-        assertArrayEquals(new int[]{0,1,1,2,3}, calculator.generateFibonacci(5));
-        assertArrayEquals(new int[]{0,1,1,2,3,5,8}, calculator.generateFibonacci(7));
+    public void testGenerateFibonacciForArg0() {
+        int[] fib = calculator.generateFibonacci(0);
+        assertEquals(0, fib.length);
+    }
+
+    @Test
+    public void testGenerateFibonacciResult() {
+        int[] fib = calculator.generateFibonacci(2);
+        assertArrayEquals(fib, new int[]{0, 1});
+    }
+
+    @Test
+    public void testGenerateFibonacciArray() {
+        assertArrayEquals(calculator.generateFibonacci(2), new int[]{0, 1});
+        assertArrayEquals(calculator.generateFibonacci(3), new int[]{0, 1, 1});
+        assertArrayEquals(calculator.generateFibonacci(4), new int[]{0, 1, 1, 2});
+        assertArrayEquals(calculator.generateFibonacci(5), new int[]{0, 1, 1, 2, 3});
+    }
+
+    @Test
+    public void testGenerateFibonacciCheckTimeout() {
+        assertTimeout(Duration.ofMillis(1000), () -> {
+            calculator.generateFibonacci(100000000);
+        });
+    }
+
+    @Test
+    void testPower() {
+        assertEquals(8, calculator.power(2, 3));
+    }
+
+    @Test
+    void testPowerExpZero() {
+        assertEquals(1, calculator.power(5, 0));
+    }
+
+    @Test
+    void testPowerNegative() {
+        assertEquals(0.04, calculator.power(5, -2));
+    }
+
+    @Test
+    void testFactorial() {
+        assertEquals(120, calculator.factorial(5));
+    }
+
+    @Test
+    void testFactorialZero() {
+        assertEquals(1, calculator.factorial(0));
+    }
+
+    @Test
+    public void testFactorialNegative() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.factorial(-5);
+        });
+        assertEquals(exception.getMessage(), "Eingabewert darf nicht negativ sein.");
+    }
+
+    @Test
+    void testGcd() {
+        assertEquals(15, calculator.gcd(45, 30));
+    }
+
+    @Test
+    void testIsPrime() {
+        assertTrue(calculator.isPrime(3));
+        assertTrue(calculator.isPrime(5));
+        assertTrue(calculator.isPrime(7));
+        assertTrue(calculator.isPrime(59));
+        assertTrue(calculator.isPrime(33179));
+    }
+
+    @Test
+    void testIsNotPrime() {
+        assertFalse(calculator.isPrime(1));
+        assertFalse(calculator.isPrime(60));
+        assertFalse(calculator.isPrime(120000));
+    }
+
+    @Test
+    void testSqrt() {
+        assertEquals(3, calculator.sqrt(9));
+        assertTrue(1.413 < calculator.sqrt(2) && calculator.sqrt(2) < 1.415);
+    }
+
+    @Test
+    public void testSqrtNegative() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            calculator.sqrt(-5);
+        });
+        assertEquals(exception.getMessage(), "Negative Zahlen sind ungültig.");
+    }
+
+    @Test
+    public void testSum() {
+        assertEquals(60, calculator.summe(new int[]{10, 20, 30}));
+    }
+
+    @Test
+    public void testAvg() {
+        assertEquals(20, calculator.durchschnitt(new int[]{10, 20, 30}));
+    }
+
+    @Test
+    public void testMax() {
+        assertEquals(1000, calculator.maximalwert(new int[]{10, 200, 100, 5, 1000, 30}));
+    }
+
+    @Test
+    public void testMin() {
+        assertEquals(5, calculator.minimalwert(new int[]{10, 200, 100, 5, 1000, 30}));
+    }
+
+    @Test
+    public void testOddNumbers() {
+        List<Integer> list = List.of(100);
+        assertEquals(list, calculator.filternGeradeZahlen(new int[]{19, 100, 5, 7}));
     }
 }
